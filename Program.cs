@@ -11,6 +11,9 @@ class Program
         {
             Menu.ExibirMenuPrincipal();
             Menu.ExibirSubMenuAtivacao();
+            Menu.ExibirSubMenuDefender();
+            Menu.ExibirSubMenuUpdate();
+            // Menu.ExibirSubMenuOtimizacao();
         } while (op != 0);
     }
 }

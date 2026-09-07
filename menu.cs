@@ -43,7 +43,7 @@ class Menu
         Console.WriteLine("║                                                         ║");
         Console.WriteLine("║ 1. Ativar Windows Defender                              ║");
         Console.WriteLine("║ 2. Desativar Windows Defender                           ║");
-        Console.WriteLine("║ 2. Verificar status Windows Defender                    ║");
+        Console.WriteLine("║ 3. Verificar status Windows Defender                    ║");
         Console.WriteLine("║                                                         ║");
         Console.WriteLine("║ 0. Voltar                                               ║");
         Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
@@ -57,9 +57,24 @@ class Menu
         Console.WriteLine("║                                                         ║");
         Console.WriteLine("║ 1. Ativar Windows Update                                ║");
         Console.WriteLine("║ 2. Desativar Windows Update                             ║");
-        Console.WriteLine("║ 2. Verificar status Windows Update                      ║");
+        Console.WriteLine("║ 3. Verificar status Windows Update                      ║");
         Console.WriteLine("║                                                         ║");
         Console.WriteLine("║ 0. Voltar                                               ║");
         Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
     }
+
+    public static void ExibirSubMenuOtimizacao()
+    {
+        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║             NEXORA > FERRAMENTAS > OTIMIZAÇÃO           ║");
+        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
+        Console.WriteLine("║                                                         ║");
+        Console.WriteLine("║ 1. Otimização completa                                  ║");
+        Console.WriteLine("║ 2. Desativar serviços desnecessários                    ║");
+        Console.WriteLine("║                                                         ║");
+        Console.WriteLine("║ 0. Voltar                                               ║");
+        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+    }
+
+    
 }
