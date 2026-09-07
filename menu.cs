@@ -34,4 +34,18 @@ class Menu
         Console.WriteLine("║ 0. Voltar                                               ║");
         Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
     }
+
+    public static void ExibirSubMenuDefender()
+    {
+        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║               NEXORA > SISTEMAS > DEFENDER              ║");
+        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
+        Console.WriteLine("║                                                         ║");
+        Console.WriteLine("║ 1. Ativar Windows Defender                              ║");
+        Console.WriteLine("║ 2. Desativar Windows Defender                           ║");
+        Console.WriteLine("║ 2. Verificar status Windows Defender                    ║");
+        Console.WriteLine("║                                                         ║");
+        Console.WriteLine("║ 0. Voltar                                               ║");
+        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+    }
 }
