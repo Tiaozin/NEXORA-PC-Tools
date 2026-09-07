@@ -115,9 +115,8 @@ class InformacoesPC
         foreach (ManagementObject os in sistema.Get())
         {
             string nome = os["Caption"]?.ToString().Replace("Microsoft ", "") ?? "";
-            string versao = os["Version"]?.ToString() ?? "";
 
-            versaoWindows = $"{nome} ({versao})";
+            versaoWindows = $"{nome}";
         }
 
         ManagementObjectSearcher ativacao =
