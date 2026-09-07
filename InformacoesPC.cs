@@ -395,9 +395,9 @@ public static void ExibirArmazenamento()
 
         Console.WriteLine($"║ Unidade: {disco.Name}");
         Console.WriteLine($"║ Tipo: {disco.DriveType}");
-        Console.WriteLine($"║ Capacidade: {capacidade:F0} GB");
-        Console.WriteLine($"║ Usado: {usado:F0} GB");
-        Console.WriteLine($"║ Livre: {livre:F0} GB");
+        Console.WriteLine($"║ Capacidade: {capacidade:F2} GB");
+        Console.WriteLine($"║ Usado: {usado:F2} GB");
+        Console.WriteLine($"║ Livre: {livre:F2} GB");
         Console.WriteLine("║");
     }
 }
@@ -417,7 +417,7 @@ public static void ExibirArmazenamentoBasico()
         double livre = disco.AvailableFreeSpace /
                        (1024.0 * 1024.0 * 1024.0);
 
-        Console.WriteLine($"║ Armazenamento {disco.Name}: {capacidade:F0} GB ({livre:F0} GB livres)");
+        Console.WriteLine($"║ Armazenamento {disco.Name}: {capacidade:F2} GB ({livre:F2} GB livres)");
     }
 }
     public static void ExibirRodape()

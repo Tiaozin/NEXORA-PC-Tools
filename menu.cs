@@ -118,7 +118,8 @@ class Menu
         Console.WriteLine("║ 3. Processador                                          ║");
         Console.WriteLine("║ 4. Placa de Vídeo                                       ║");
         Console.WriteLine("║ 5. Memória RAM                                          ║");
-        Console.WriteLine("║ 6. Windows                                              ║");
+        Console.WriteLine("║ 6. Armazenamento                                        ║");
+        Console.WriteLine("║ 7. Windows                                              ║");
         Console.WriteLine("║                                                         ║");
         Console.WriteLine("║ 0. Voltar                                               ║");
         Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
@@ -127,7 +128,7 @@ class Menu
     public static void ExibirSubMenuLimpeza()
     {
         Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║              NEXORA > FERRAMENTAS > Limpeza             ║");
+        Console.WriteLine("║              NEXORA > FERRAMENTAS > LIMPEZA             ║");
         Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
         Console.WriteLine("║                                                         ║");
         Console.WriteLine("║ 1. Esvaziar Lixeira                                     ║");
