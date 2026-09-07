@@ -1,11 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "L+Zn5YI+MN0=",
+  "dgSpecHash": "ahTmrd+iDXo=",
   "success": true,
   "projectFilePath": "E:\\NEXORA\\NEXORA PC Tools\\NEXORA PC Tools.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Tiaozin\\.nuget\\packages\\sharpgen.runtime\\2.4.2-beta\\sharpgen.runtime.2.4.2-beta.nupkg.sha512",
+    "C:\\Users\\Tiaozin\\.nuget\\packages\\sharpgen.runtime.com\\2.4.2-beta\\sharpgen.runtime.com.2.4.2-beta.nupkg.sha512",
     "C:\\Users\\Tiaozin\\.nuget\\packages\\system.codedom\\10.0.11\\system.codedom.10.0.11.nupkg.sha512",
-    "C:\\Users\\Tiaozin\\.nuget\\packages\\system.management\\10.0.11\\system.management.10.0.11.nupkg.sha512"
+    "C:\\Users\\Tiaozin\\.nuget\\packages\\system.io.pipelines\\9.0.1\\system.io.pipelines.9.0.1.nupkg.sha512",
+    "C:\\Users\\Tiaozin\\.nuget\\packages\\system.management\\10.0.11\\system.management.10.0.11.nupkg.sha512",
+    "C:\\Users\\Tiaozin\\.nuget\\packages\\system.text.encodings.web\\9.0.1\\system.text.encodings.web.9.0.1.nupkg.sha512",
+    "C:\\Users\\Tiaozin\\.nuget\\packages\\system.text.json\\9.0.1\\system.text.json.9.0.1.nupkg.sha512",
+    "C:\\Users\\Tiaozin\\.nuget\\packages\\vortice.directx\\3.8.3\\vortice.directx.3.8.3.nupkg.sha512",
+    "C:\\Users\\Tiaozin\\.nuget\\packages\\vortice.dxgi\\3.8.3\\vortice.dxgi.3.8.3.nupkg.sha512",
+    "C:\\Users\\Tiaozin\\.nuget\\packages\\vortice.mathematics\\2.1.0\\vortice.mathematics.2.1.0.nupkg.sha512"
   ],
   "logs": []
 }

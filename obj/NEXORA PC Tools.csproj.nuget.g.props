@@ -12,4 +12,7 @@
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <SourceRoot Include="C:\Users\Tiaozin\.nuget\packages\" />
   </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)vortice.dxgi\3.8.3\build\Vortice.DXGI.props" Condition="Exists('$(NuGetPackageRoot)vortice.dxgi\3.8.3\build\Vortice.DXGI.props')" />
+  </ImportGroup>
 </Project>
