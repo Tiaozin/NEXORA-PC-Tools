@@ -10,7 +10,7 @@ class Program
         do
         {
             Menu.ExibirMenuPrincipal();
-            // Menu.ExibirSubMenuOtimizacao();
+            InformacoesPC.ExibirInformacoesPC();
         } while (op != 0);
     }
 }
