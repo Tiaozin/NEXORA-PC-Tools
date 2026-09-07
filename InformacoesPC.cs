@@ -82,6 +82,27 @@ class InformacoesPC
             }
         }
 
+        double memoriaRAM = 0;
+        int frequenciaRAM = 0;
+        int modulosRAM = 0;
+
+        // Informações da memória RAM
+        ManagementObjectSearcher memoria =
+            new ManagementObjectSearcher(
+                "SELECT Capacity, Speed FROM Win32_PhysicalMemory");
+
+        ulong memoriaTotal = 0;
+
+        foreach (ManagementObject ram in memoria.Get())
+        {
+            memoriaTotal += Convert.ToUInt64(ram["Capacity"]);
+            frequenciaRAM = Convert.ToInt32(ram["Speed"]);
+            modulosRAM++;
+        }
+
+        memoriaRAM = memoriaTotal /
+                     (1024.0 * 1024.0 * 1024.0);
+
         Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
         Console.WriteLine("║            NEXORA > FERRAMENTAS > INFORMAÇÕES           ║");
         Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
@@ -99,8 +120,9 @@ class InformacoesPC
         Console.WriteLine($"║ VRAM: {vram:F2} GB");
         Console.WriteLine($"║ Driver: {driverGPU}");
         Console.WriteLine("║");
-        Console.WriteLine("║ Memória RAM:");
-        Console.WriteLine("║ Frequência:");
+        Console.WriteLine($"║ Memória RAM: {memoriaRAM:F0} GB");
+        Console.WriteLine($"║ Frequência: {frequenciaRAM} MHz");
+        Console.WriteLine($"║ Módulos: {modulosRAM}");
         Console.WriteLine("║");
         Console.WriteLine("║ Sistema Operacional:");
         Console.WriteLine("║ Status Ativação:");
