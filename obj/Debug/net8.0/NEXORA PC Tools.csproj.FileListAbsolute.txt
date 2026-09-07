@@ -1,0 +1,15 @@
+E:\NEXORA\NEXORA PC Tools\bin\Debug\net8.0\NEXORA PC Tools.exe
+E:\NEXORA\NEXORA PC Tools\bin\Debug\net8.0\NEXORA PC Tools.deps.json
+E:\NEXORA\NEXORA PC Tools\bin\Debug\net8.0\NEXORA PC Tools.runtimeconfig.json
+E:\NEXORA\NEXORA PC Tools\bin\Debug\net8.0\NEXORA PC Tools.dll
+E:\NEXORA\NEXORA PC Tools\bin\Debug\net8.0\NEXORA PC Tools.pdb
+E:\NEXORA\NEXORA PC Tools\obj\Debug\net8.0\NEXORA PC Tools.GeneratedMSBuildEditorConfig.editorconfig
+E:\NEXORA\NEXORA PC Tools\obj\Debug\net8.0\NEXORA PC Tools.AssemblyInfoInputs.cache
+E:\NEXORA\NEXORA PC Tools\obj\Debug\net8.0\NEXORA PC Tools.AssemblyInfo.cs
+E:\NEXORA\NEXORA PC Tools\obj\Debug\net8.0\NEXORA PC Tools.csproj.CoreCompileInputs.cache
+E:\NEXORA\NEXORA PC Tools\obj\Debug\net8.0\NEXORA PC Tools.sourcelink.json
+E:\NEXORA\NEXORA PC Tools\obj\Debug\net8.0\NEXORA PC Tools.dll
+E:\NEXORA\NEXORA PC Tools\obj\Debug\net8.0\refint\NEXORA PC Tools.dll
+E:\NEXORA\NEXORA PC Tools\obj\Debug\net8.0\NEXORA PC Tools.pdb
+E:\NEXORA\NEXORA PC Tools\obj\Debug\net8.0\NEXORA PC Tools.genruntimeconfig.cache
+E:\NEXORA\NEXORA PC Tools\obj\Debug\net8.0\ref\NEXORA PC Tools.dll

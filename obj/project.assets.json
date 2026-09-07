@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\NEXUS\\NEXUS PC Tools\\NEXUS PC Tools.csproj",
-      "projectName": "NEXUS PC Tools",
-      "projectPath": "E:\\NEXUS\\NEXUS PC Tools\\NEXUS PC Tools.csproj",
+      "projectUniqueName": "E:\\NEXORA\\NEXORA PC Tools\\NEXORA PC Tools.csproj",
+      "projectName": "NEXORA PC Tools",
+      "projectPath": "E:\\NEXORA\\NEXORA PC Tools\\NEXORA PC Tools.csproj",
       "packagesPath": "C:\\Users\\Tiaozin\\.nuget\\packages\\",
-      "outputPath": "E:\\NEXUS\\NEXUS PC Tools\\obj\\",
+      "outputPath": "E:\\NEXORA\\NEXORA PC Tools\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Tiaozin\\AppData\\Roaming\\NuGet\\NuGet.Config"
