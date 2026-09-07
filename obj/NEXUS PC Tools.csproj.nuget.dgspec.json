@@ -1,0 +1,63 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\NEXUS\\NEXUS PC Tools\\NEXUS PC Tools.csproj": {}
+  },
+  "projects": {
+    "E:\\NEXUS\\NEXUS PC Tools\\NEXUS PC Tools.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\NEXUS\\NEXUS PC Tools\\NEXUS PC Tools.csproj",
+        "projectName": "NEXUS PC Tools",
+        "projectPath": "E:\\NEXUS\\NEXUS PC Tools\\NEXUS PC Tools.csproj",
+        "packagesPath": "C:\\Users\\Tiaozin\\.nuget\\packages\\",
+        "outputPath": "E:\\NEXUS\\NEXUS PC Tools\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Tiaozin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.424/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
