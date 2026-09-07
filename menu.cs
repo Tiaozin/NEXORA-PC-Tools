@@ -79,10 +79,24 @@ class Menu
     public static void ExibirSubMenuEnergia()
     {
         Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║             NEXORA > FERRAMENTAS > OTIMIZAÇÃO           ║");
+        Console.WriteLine("║              NEXORA > FERRAMENTAS > ENERGIA             ║");
         Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
         Console.WriteLine("║                                                         ║");
         Console.WriteLine("║ 1. Ativar plano de energia 'Desempenho Máximo'          ║");
+        Console.WriteLine("║                                                         ║");
+        Console.WriteLine("║ 0. Voltar                                               ║");
+        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+    }
+
+    public static void ExibirSubMenuEnergia()
+    {
+        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║              NEXORA > FERRAMENTAS > DRIVERS             ║");
+        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
+        Console.WriteLine("║                                                         ║");
+        Console.WriteLine("║ 1. Instalar Drivers NVIDIA                              ║");
+        Console.WriteLine("║ 2. Instalar Drivers AMD (Placa de Vídeo)                ║");
+        Console.WriteLine("║ 3. Instalar Drivers AMD (Processador)                   ║");
         Console.WriteLine("║                                                         ║");
         Console.WriteLine("║ 0. Voltar                                               ║");
         Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
