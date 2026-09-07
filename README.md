@@ -4,7 +4,7 @@
 
 **Status:** 🚧 v1 em desenvolvimento
 
-O **NEXUS PC Tools** é um projeto desenvolvido em **C#** com o objetivo de reunir ferramentas úteis para manutenção, configuração e gerenciamento de computadores Windows em um único programa.
+O **NEXORA PC Tools** é um projeto desenvolvido em **C#** com o objetivo de reunir ferramentas úteis para manutenção, configuração e gerenciamento de computadores Windows em um único programa.
 
 ## 📌 Funcionalidades planejadas
 
@@ -41,4 +41,4 @@ Criar uma ferramenta simples, prática e centralizada para realizar tarefas comu
 
 ---
 
-**NEXUS PC Tools — v1 em desenvolvimento 🚧**
+**NEXORA PC Tools — v1 em desenvolvimento 🚧**
