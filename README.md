@@ -39,6 +39,42 @@ A primeira versão será executada pelo **terminal**. Futuramente, o projeto pod
 
 Criar uma ferramenta simples, prática e centralizada para realizar tarefas comuns de manutenção e configuração do Windows.
 
+## ▶️ Como executar (Por enquanto)
+
+### Requisitos
+
+* Windows
+* [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+
+### Executando o projeto
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/Tiaozin/NEXORA-PC-Tools.git
+```
+
+Entre na pasta do projeto:
+
+```bash
+cd NEXORA-PC-Tools
+```
+
+Restaure as dependências:
+
+```bash
+dotnet restore
+```
+
+Execute o NEXORA:
+
+```bash
+dotnet run
+```
+
+> **Observação:** as pastas `bin` e `obj` não são incluídas no repositório, pois são geradas automaticamente pelo .NET durante a compilação.
+
+
 ---
 
 **NEXORA PC Tools — v1 em desenvolvimento 🚧**
