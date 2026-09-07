@@ -48,4 +48,18 @@ class Menu
         Console.WriteLine("║ 0. Voltar                                               ║");
         Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
     }
+
+    public static void ExibirSubMenuUpdate()
+    {
+        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║                NEXORA > SISTEMAS > UPDATE               ║");
+        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
+        Console.WriteLine("║                                                         ║");
+        Console.WriteLine("║ 1. Ativar Windows Update                                ║");
+        Console.WriteLine("║ 2. Desativar Windows Update                             ║");
+        Console.WriteLine("║ 2. Verificar status Windows Update                      ║");
+        Console.WriteLine("║                                                         ║");
+        Console.WriteLine("║ 0. Voltar                                               ║");
+        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+    }
 }
