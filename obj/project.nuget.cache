@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "b9FIfHoZdL8=",
+  "dgSpecHash": "L+Zn5YI+MN0=",
   "success": true,
   "projectFilePath": "E:\\NEXORA\\NEXORA PC Tools\\NEXORA PC Tools.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Tiaozin\\.nuget\\packages\\system.codedom\\10.0.11\\system.codedom.10.0.11.nupkg.sha512",
+    "C:\\Users\\Tiaozin\\.nuget\\packages\\system.management\\10.0.11\\system.management.10.0.11.nupkg.sha512"
+  ],
   "logs": []
 }

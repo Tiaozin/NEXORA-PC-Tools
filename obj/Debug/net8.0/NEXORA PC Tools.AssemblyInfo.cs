@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NEXORA PC Tools")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d7f4f02c93dc33abc16e2ce075f2418cbf940222")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+77dfbd5a4ab1fc44b3552ccae0aeec63765d5896")]
 [assembly: System.Reflection.AssemblyProductAttribute("NEXORA PC Tools")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NEXORA PC Tools")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

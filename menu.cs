@@ -88,7 +88,7 @@ class Menu
         Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
     }
 
-    public static void ExibirSubMenuEnergia()
+    public static void ExibirSubMenuDrivers()
     {
         Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
         Console.WriteLine("║              NEXORA > FERRAMENTAS > DRIVERS             ║");
@@ -101,4 +101,5 @@ class Menu
         Console.WriteLine("║ 0. Voltar                                               ║");
         Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
     }
+
 }

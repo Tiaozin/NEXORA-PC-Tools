@@ -13,3 +13,8 @@ E:\NEXORA\NEXORA PC Tools\obj\Debug\net8.0\refint\NEXORA PC Tools.dll
 E:\NEXORA\NEXORA PC Tools\obj\Debug\net8.0\NEXORA PC Tools.pdb
 E:\NEXORA\NEXORA PC Tools\obj\Debug\net8.0\NEXORA PC Tools.genruntimeconfig.cache
 E:\NEXORA\NEXORA PC Tools\obj\Debug\net8.0\ref\NEXORA PC Tools.dll
+E:\NEXORA\NEXORA PC Tools\obj\Debug\net8.0\NEXORA PC Tools.csproj.AssemblyReference.cache
+E:\NEXORA\NEXORA PC Tools\bin\Debug\net8.0\System.CodeDom.dll
+E:\NEXORA\NEXORA PC Tools\bin\Debug\net8.0\System.Management.dll
+E:\NEXORA\NEXORA PC Tools\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Management.dll
+E:\NEXORA\NEXORA PC Tools\obj\Debug\net8.0\NEXORA P.162C8305.Up2Date
