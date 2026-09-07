@@ -13,7 +13,7 @@ class Menu
         Console.WriteLine("║         SISTEMAS           |        FERRAMENTAS         ║");
         Console.WriteLine("║                            |                            ║");
         Console.WriteLine("║ 1. Ativação                | 6. Otimização              ║");
-        Console.WriteLine("║ 2. Defender                | 7. Energia                 ║");
+        Console.WriteLine("║ 2. Windows Defender        | 7. Energia                 ║");
         Console.WriteLine("║ 3. Windows Update          | 8. Drivers                 ║");
         Console.WriteLine("║ 4. Instalar Programas      | 9. Informações do PC       ║");
         Console.WriteLine("║ 5. Desinstalar             | 10. Limpeza                ║");
