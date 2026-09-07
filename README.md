@@ -16,7 +16,7 @@ O **NEXORA PC Tools** é um projeto desenvolvido em **C#** com o objetivo de reu
 - [ ] Otimização do Windows
 - [ ] Gerenciamento de energia
 - [ ] Instalação de drivers NVIDIA/AMD
-- [ ] Informações do PC
+- [x] Informações do PC
 - [ ] Limpeza do sistema
 - [ ] Ferramentas de rede
 - [ ] Diagnóstico do sistema
