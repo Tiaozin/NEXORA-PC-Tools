@@ -103,6 +103,42 @@ class InformacoesPC
         memoriaRAM = memoriaTotal /
                      (1024.0 * 1024.0 * 1024.0);
 
+
+        string versaoWindows = "Não encontrado";
+        string ativacaoWindows = "Não encontrado";
+
+        // Informacoes Sistema
+        ManagementObjectSearcher sistema =
+            new ManagementObjectSearcher(
+                "SELECT Caption, Version FROM Win32_OperatingSystem");
+
+        foreach (ManagementObject os in sistema.Get())
+        {
+            string nome = os["Caption"]?.ToString().Replace("Microsoft ", "") ?? "";
+            string versao = os["Version"]?.ToString() ?? "";
+
+            versaoWindows = $"{nome} ({versao})";
+        }
+
+        ManagementObjectSearcher ativacao =
+    new ManagementObjectSearcher(
+        "SELECT LicenseStatus FROM SoftwareLicensingProduct " +
+        "WHERE PartialProductKey IS NOT NULL " +
+        "AND ApplicationID = '55c92734-d682-4d71-983e-d6ec3f16059f'");
+
+        foreach (ManagementObject produto in ativacao.Get())
+        {
+            int status = Convert.ToInt32(produto["LicenseStatus"]);
+
+            if (status == 1)
+            {
+                ativacaoWindows = "Ativado";
+                break;
+            }
+
+            ativacaoWindows = "Não ativado";
+        }
+
         Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
         Console.WriteLine("║            NEXORA > FERRAMENTAS > INFORMAÇÕES           ║");
         Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
@@ -124,8 +160,8 @@ class InformacoesPC
         Console.WriteLine($"║ Frequência: {frequenciaRAM} MHz");
         Console.WriteLine($"║ Módulos: {modulosRAM}");
         Console.WriteLine("║");
-        Console.WriteLine("║ Sistema Operacional:");
-        Console.WriteLine("║ Status Ativação:");
+        Console.WriteLine($"║ Sistema Operacional: {versaoWindows}");
+        Console.WriteLine($"║ Status Ativação: {ativacaoWindows}");
         Console.WriteLine("║");
         Console.WriteLine("║ 0. Voltar");
         Console.WriteLine("╚══════════════════════════════════════════════════════════");
