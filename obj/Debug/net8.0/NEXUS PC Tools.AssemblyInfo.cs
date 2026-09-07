@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NEXUS PC Tools")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+827b259c17b621ba1f295aa0e657888650297b3e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+101435f91fcf5a8e854f9c3604d826960f8268e5")]
 [assembly: System.Reflection.AssemblyProductAttribute("NEXUS PC Tools")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NEXUS PC Tools")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
