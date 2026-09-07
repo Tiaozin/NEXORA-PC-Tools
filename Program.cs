@@ -11,6 +11,18 @@ class Program
             op = Validacao.LerNumero("Digite uma Opção: ");
             switch (op)
             {
+                case 0:
+                    Console.Write("Tem certeza que quer sair? (s/n): ");
+                    string resposta = Console.ReadLine() ?? "";
+                    if (resposta == "s")
+                    {
+                        Console.WriteLine("Fechando o programa...");
+                    }
+                    else
+                    {
+                        op = -1;
+                    }
+                    break;
                 case 1:
                     SubMenuAtivacao();
                     break;
@@ -47,48 +59,334 @@ class Program
                     break;
             }
 
-            Console.ReadKey();
-
         } while (op != 0);
     }
 
     static void SubMenuAtivacao()
     {
-        Menu.ExibirSubMenuAtivacao();
+        int op;
+        do
+        {
+            Console.Clear();
+            Menu.ExibirSubMenuAtivacao();
+            op = Validacao.LerNumero("Digite uma Opção: ");
+
+            switch (op)
+            {
+                case 1:
+                    // Funcao pra ativar o Windows
+                    break;
+
+                case 2:
+                    // Funcao pra verificar se Windows esta ativado
+                    break;
+
+                case 0:
+                    break;
+
+                default:
+                    Console.WriteLine("Opção inválida.");
+                    break;
+            }
+
+            if (op != 0)
+                Console.ReadKey();
+
+        } while (op != 0);
     }
 
     static void SubMenuDefender()
     {
-        Menu.ExibirSubMenuDefender();
+        int op;
+        do
+        {
+            Console.Clear();
+            Menu.ExibirSubMenuDefender();
+            op = Validacao.LerNumero("Digite uma Opção: ");
+
+            switch (op)
+            {
+                case 1:
+                    // Funcao pra ativar o Defender
+                    break;
+
+                case 2:
+                    // Funcao pra desativar Defender
+                    break;
+
+                case 3:
+                    // Funcao pra verificar Defender
+                    break;
+
+                case 0:
+                    break;
+
+                default:
+                    Console.WriteLine("Opção inválida.");
+                    break;
+            }
+
+            if (op != 0)
+                Console.ReadKey();
+
+        } while (op != 0);
     }
 
     static void SubMenuUpdate()
     {
-        Menu.ExibirSubMenuUpdate();
+        int op;
+        do
+        {
+            Console.Clear();
+            Menu.ExibirSubMenuUpdate();
+            op = Validacao.LerNumero("Digite uma Opção: ");
+
+            switch (op)
+            {
+                case 1:
+                    // Funcao pra ativar o Update
+                    break;
+
+                case 2:
+                    // Funcao pra desativar Update
+                    break;
+
+                case 3:
+                    // Funcao pra verificar Update
+                    break;
+
+                case 0:
+                    break;
+
+                default:
+                    Console.WriteLine("Opção inválida.");
+                    break;
+            }
+
+            if (op != 0)
+                Console.ReadKey();
+
+        } while (op != 0);
     }
 
     static void SubMenuOtimizacao()
     {
-        Menu.ExibirSubMenuOtimizacao();
+        int op;
+        do
+        {
+            Console.Clear();
+            Menu.ExibirSubMenuOtimizacao();
+            op = Validacao.LerNumero("Digite uma Opção: ");
+
+            switch (op)
+            {
+                case 1:
+                    // Funcao pra otimizar
+                    break;
+
+                case 2:
+                    // Funcao pra desativar programas desnecessarios
+                    break;
+
+                case 0:
+                    break;
+
+                default:
+                    Console.WriteLine("Opção inválida.");
+                    break;
+            }
+
+            if (op != 0)
+                Console.ReadKey();
+
+        } while (op != 0);
     }
 
     static void SubMenuEnergia()
     {
-        Menu.ExibirSubMenuEnergia();
+        int op;
+        do
+        {
+            Console.Clear();
+            Menu.ExibirSubMenuEnergia();
+            op = Validacao.LerNumero("Digite uma Opção: ");
+
+            switch (op)
+            {
+                case 1:
+                    // Funcao pra ativar Desempenho Maximo
+                    break;
+
+                case 2:
+                    // Funcao pra ativar Alto Desempenho
+                    break;
+
+                case 3:
+                    // Funcao pra ativar Equilibrado
+                    break;
+
+                case 4:
+                    // Funcao pra ativar Economia
+                    break;
+
+                case 5:
+                    // Funcao pra verificar plano
+                    break;
+
+                case 0:
+                    break;
+
+                default:
+                    Console.WriteLine("Opção inválida.");
+                    break;
+            }
+
+            if (op != 0)
+                Console.ReadKey();
+
+        } while (op != 0);
     }
 
     static void SubMenuDrivers()
     {
-        Menu.ExibirSubMenuDrivers();
+        int op;
+        do
+        {
+            Console.Clear();
+            Menu.ExibirSubMenuDrivers();
+            op = Validacao.LerNumero("Digite uma Opção: ");
+
+            switch (op)
+            {
+                case 1:
+                    // Funcao pra instalar driver nvidia
+                    break;
+
+                case 2:
+                    // Funcao pra instalar driver amd gpu
+                    break;
+
+                case 3:
+                    // Funcao pra instalar driver amd cpu
+                    break;
+
+                case 0:
+                    break;
+
+                default:
+                    Console.WriteLine("Opção inválida.");
+                    break;
+            }
+
+            if (op != 0)
+                Console.ReadKey();
+        } while (op != 0);
     }
 
     static void SubMenuInformacoes()
     {
-        Menu.ExibirSubMenuInformacoes();
+        int op;
+        do
+        {
+            Console.Clear();
+            Menu.ExibirSubMenuInformacoes();
+            op = Validacao.LerNumero("Digite uma Opção: ");
+
+            switch (op)
+            {
+                case 1:
+                    InformacoesPC.ExibirInformacoesCompletas();
+                    break;
+
+                case 2:
+                    InformacoesPC.ExibirInformacoesBasicas();
+                    break;
+
+                case 3:
+                    InformacoesPC.ExibirInformacoesCPU();
+                    break;
+
+                case 4:
+                    InformacoesPC.ExibirInformacoesGPU();
+                    break;
+
+                case 5:
+                    InformacoesPC.ExibirInformacoesRAM();
+                    break;
+
+                case 6:
+                    InformacoesPC.ExibirInformacoesWindows();
+                    break;
+
+                case 0:
+                    break;
+
+                default:
+                    Console.WriteLine("Opção inválida.");
+                    break;
+            }
+
+            if (op != 0)
+                Console.ReadKey();
+
+        } while (op != 0);
     }
 
     static void SubMenuLimpeza()
     {
         Menu.ExibirSubMenuLimpeza();
+        int op;
+        do
+        {
+            Console.Clear();
+            Menu.ExibirSubMenuEnergia();
+            op = Validacao.LerNumero("Digite uma Opção: ");
+
+            switch (op)
+            {
+                case 1:
+                    // Funcao pra Esvaziar Lixeira 
+                    break;
+
+                case 2:
+                    // Funcao pra Apagar Arquivos Temporários
+                    break;
+
+                case 3:
+                    // Funcao pra Limpar Cache do Windows
+                    break;
+
+                case 4:
+                    // Funcao pra Limpar Cache de DNS
+                    break;
+
+                case 5:
+                    // Funcao pra Limpar Arquivos de Atualização do Windows
+                    break;
+
+                case 6:
+                    // Funcao pra Limpar Miniaturas
+                    break;
+
+                case 7:
+                    // Funcao pra Limpar Relatórios de Erros
+                    break;
+
+                case 8:
+                    // Funcao pra Limpeza Completa Segura
+                    break;
+
+                case 0:
+                    break;
+
+                default:
+                    Console.WriteLine("Opção inválida.");
+                    break;
+            }
+
+            if (op != 0)
+                Console.ReadKey();
+
+        } while (op != 0);
     }
 }
