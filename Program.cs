@@ -10,6 +10,7 @@ class Program
         do
         {
             Menu.ExibirMenuPrincipal();
+            InformacoesPC.ExibirInformacoesBasicas();
         } while (op != 0);
     }
 }

@@ -14,11 +14,15 @@ class InformacoesPC
         Console.WriteLine("║");
         Console.WriteLine($"║ Nome do Dispositivo: {Environment.MachineName}");
         Console.WriteLine("║");
+        ExibirPlacaMae();
+        Console.WriteLine("║");
         ExibirCPU();
         Console.WriteLine("║");
         ExibirGPU();
         Console.WriteLine("║");
         ExibirRAM();
+        Console.WriteLine("║");
+        ExibirArmazenamento();
         Console.WriteLine("║");
         ExibirWindows();
         ExibirRodape();
@@ -36,6 +40,7 @@ class InformacoesPC
         ExibirCPUBasico();
         ExibirGPUBasico();
         ExibirRAMBasico();
+        ExibirArmazenamentoBasico();
         ExibirWindowsBasico();
         ExibirRodape();
     }
@@ -70,6 +75,16 @@ class InformacoesPC
         ExibirRodape();
     }
 
+    public static void ExibirInformacoesArmazenamento()
+    {
+        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║    NEXORA > FERRAMENTAS > INFORMAÇÕES > ARMAZENAMENTO   ║");
+        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
+        Console.WriteLine("║");
+        ExibirArmazenamento();
+        ExibirRodape();
+    }
+
     public static void ExibirInformacoesWindows()
     {
         Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
@@ -80,6 +95,24 @@ class InformacoesPC
         ExibirRodape();
     }
 
+    public static void ExibirPlacaMae()
+    {
+        string fabricante = "Não encontrado";
+        string modelo = "Não encontrado";
+
+        // Informações da placa-mãe
+        ManagementObjectSearcher placaMae =
+            new ManagementObjectSearcher(
+                "SELECT Manufacturer, Product FROM Win32_BaseBoard");
+
+        foreach (ManagementObject placa in placaMae.Get())
+        {
+            fabricante = placa["Manufacturer"]?.ToString() ?? "Não encontrado";
+            modelo = placa["Product"]?.ToString() ?? "Não encontrado";
+        }
+
+        Console.WriteLine($"║ Placa-mãe: {fabricante} {modelo}");
+    }
 
     public static void ExibirCPU()
     {
@@ -343,6 +376,50 @@ class InformacoesPC
         Console.WriteLine($"║ Sistema Operacional: {versaoWindows}");
     }
 
+public static void ExibirArmazenamento()
+{
+    DriveInfo[] discos = DriveInfo.GetDrives();
+
+    foreach (DriveInfo disco in discos)
+    {
+        if (!disco.IsReady)
+            continue;
+
+        double capacidade = disco.TotalSize /
+                            (1024.0 * 1024.0 * 1024.0);
+
+        double livre = disco.AvailableFreeSpace /
+                       (1024.0 * 1024.0 * 1024.0);
+
+        double usado = capacidade - livre;
+
+        Console.WriteLine($"║ Unidade: {disco.Name}");
+        Console.WriteLine($"║ Tipo: {disco.DriveType}");
+        Console.WriteLine($"║ Capacidade: {capacidade:F0} GB");
+        Console.WriteLine($"║ Usado: {usado:F0} GB");
+        Console.WriteLine($"║ Livre: {livre:F0} GB");
+        Console.WriteLine("║");
+    }
+}
+
+public static void ExibirArmazenamentoBasico()
+{
+    DriveInfo[] discos = DriveInfo.GetDrives();
+
+    foreach (DriveInfo disco in discos)
+    {
+        if (!disco.IsReady)
+            continue;
+
+        double capacidade = disco.TotalSize /
+                            (1024.0 * 1024.0 * 1024.0);
+
+        double livre = disco.AvailableFreeSpace /
+                       (1024.0 * 1024.0 * 1024.0);
+
+        Console.WriteLine($"║ Armazenamento {disco.Name}: {capacidade:F0} GB ({livre:F0} GB livres)");
+    }
+}
     public static void ExibirRodape()
     {
         Console.WriteLine("║                                                          ");

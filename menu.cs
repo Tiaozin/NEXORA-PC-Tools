@@ -84,6 +84,9 @@ class Menu
         Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
         Console.WriteLine("║                                                         ║");
         Console.WriteLine("║ 1. Ativar plano de energia 'Desempenho Máximo'          ║");
+        Console.WriteLine("║ 2. Ativar 'Alto Desempenho'                             ║");
+        Console.WriteLine("║ 3. Ativar 'Equilibrado'                                 ║");
+        Console.WriteLine("║ 4. Verificar Plano Atual                                ║");
         Console.WriteLine("║                                                         ║");
         Console.WriteLine("║ 0. Voltar                                               ║");
         Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
@@ -121,5 +124,23 @@ class Menu
         Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
     }
 
+    public static void ExibirSubMenuLimpeza()
+    {
+        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║              NEXORA > FERRAMENTAS > Limpeza             ║");
+        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
+        Console.WriteLine("║                                                         ║");
+        Console.WriteLine("║ 1. Esvaziar Lixeira                                     ║");
+        Console.WriteLine("║ 2. Apagar Arquivos Temporários                          ║");
+        Console.WriteLine("║ 3. Limpar Cache do Windows                              ║");
+        Console.WriteLine("║ 4. Limpar Cache de DNS                                  ║");
+        Console.WriteLine("║ 5. Limpar Arquivos de Atualização do Windows            ║");
+        Console.WriteLine("║ 6. Limpar Miniaturas                                    ║");
+        Console.WriteLine("║ 7. Limpar Relatórios de Erros                           ║");
+        Console.WriteLine("║ 8. Limpeza Completa Segura                              ║");
+        Console.WriteLine("║                                                         ║");
+        Console.WriteLine("║ 0. Voltar                                               ║");
+        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+    }
 
 }
