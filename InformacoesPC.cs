@@ -4,9 +4,85 @@ using Vortice.DXGI;
 
 class InformacoesPC
 {
-    public static void ExibirInformacoesPC()
+    public static void ExibirInformacoesCompletas()
     {
+        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║            NEXORA > FERRAMENTAS > INFORMAÇÕES           ║");
+        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
+        Console.WriteLine("║");
+        Console.WriteLine("║ Informações do Computador:");
+        Console.WriteLine("║");
+        Console.WriteLine($"║ Nome do Dispositivo: {Environment.MachineName}");
+        Console.WriteLine("║");
+        ExibirCPU();
+        Console.WriteLine("║");
+        ExibirGPU();
+        Console.WriteLine("║");
+        ExibirRAM();
+        Console.WriteLine("║");
+        ExibirWindows();
+        ExibirRodape();
+    }
 
+    public static void ExibirInformacoesBasicas()
+    {
+        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║       NEXORA > FERRAMENTAS > INFORMAÇÕES > BÁSICAS      ║");
+        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
+        Console.WriteLine("║");
+        Console.WriteLine("║ Informações Básicas:");
+        Console.WriteLine("║");
+        Console.WriteLine($"║ Nome do Dispositivo: {Environment.MachineName}");
+        ExibirCPUBasico();
+        ExibirGPUBasico();
+        ExibirRAMBasico();
+        ExibirWindowsBasico();
+        ExibirRodape();
+    }
+
+    public static void ExibirInformacoesCPU()
+    {
+        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║         NEXORA > FERRAMENTAS > INFORMAÇÕES > CPU        ║");
+        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
+        Console.WriteLine("║");
+        ExibirCPU();
+        ExibirRodape();
+    }
+
+    public static void ExibirInformacoesGPU()
+    {
+        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║         NEXORA > FERRAMENTAS > INFORMAÇÕES > GPU        ║");
+        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
+        Console.WriteLine("║");
+        ExibirGPU();
+        ExibirRodape();
+    }
+
+    public static void ExibirInformacoesRAM()
+    {
+        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║         NEXORA > FERRAMENTAS > INFORMAÇÕES > RAM        ║");
+        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
+        Console.WriteLine("║");
+        ExibirRAM();
+        ExibirRodape();
+    }
+
+    public static void ExibirInformacoesWindows()
+    {
+        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║       NEXORA > FERRAMENTAS > INFORMAÇÕES > WINDOWS      ║");
+        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
+        Console.WriteLine("║");
+        ExibirWindows();
+        ExibirRodape();
+    }
+
+
+    public static void ExibirCPU()
+    {
         string nomeProcessador = "Não encontrado";
         double clockAtual = 0;
         int nucleos = 0;
@@ -27,6 +103,32 @@ class InformacoesPC
             threads = Convert.ToInt32(cpu["NumberOfLogicalProcessors"]);
         }
 
+        Console.WriteLine($"║ Processador: {nomeProcessador}");
+        Console.WriteLine($"║ Frequência: {clockAtual:F2} GHz");
+        Console.WriteLine($"║ Núcleos: {nucleos}");
+        Console.WriteLine($"║ Threads: {threads}");
+
+    }
+
+    public static void ExibirCPUBasico()
+    {
+        string nomeProcessador = "Não encontrado";
+
+
+        // Informações do processador
+        ManagementObjectSearcher processador =
+            new ManagementObjectSearcher("SELECT Name FROM Win32_Processor");
+
+        foreach (ManagementObject cpu in processador.Get())
+        {
+            nomeProcessador = cpu["Name"]?.ToString() ?? "Não encontrado";
+        }
+
+        Console.WriteLine($"║ Processador: {nomeProcessador}");
+    }
+
+    public static void ExibirGPU()
+    {
         string nomeGPU = "Não encontrado";
         double vram = 0;
 
@@ -82,6 +184,56 @@ class InformacoesPC
             }
         }
 
+        Console.WriteLine($"║ Placa de Vídeo: {nomeGPU}");
+        Console.WriteLine($"║ VRAM: {vram:F2} GB");
+        Console.WriteLine($"║ Driver: {driverGPU}");
+
+    }
+
+    public static void ExibirGPUBasico()
+    {
+        string nomeGPU = "Não encontrado";
+
+        // Informações da GPU
+        using (IDXGIFactory1 factory = DXGI.CreateDXGIFactory1<IDXGIFactory1>())
+        {
+            ulong maiorMemoria = 0;
+
+            for (uint i = 0; ; i++)
+            {
+                if (factory.EnumAdapters1(i, out IDXGIAdapter1 adapter).Failure)
+                    break;
+
+                AdapterDescription1 descricao = adapter.Description1;
+
+                // Ignora adaptadores de software
+                if ((descricao.Flags & AdapterFlags.Software) != 0)
+                {
+                    adapter.Dispose();
+                    continue;
+                }
+
+                ulong memoriaBytes =
+                    (ulong)(nuint)descricao.DedicatedVideoMemory;
+
+                // Guarda a GPU com maior memória dedicada
+                if (memoriaBytes > maiorMemoria)
+                {
+                    maiorMemoria = memoriaBytes;
+
+                    nomeGPU = descricao.Description;
+                }
+
+                adapter.Dispose();
+            }
+        }
+
+        Console.WriteLine($"║ Placa de Vídeo: {nomeGPU}");
+
+    }
+
+    public static void ExibirRAM()
+    {
         double memoriaRAM = 0;
         int frequenciaRAM = 0;
         int modulosRAM = 0;
@@ -103,7 +255,37 @@ class InformacoesPC
         memoriaRAM = memoriaTotal /
                      (1024.0 * 1024.0 * 1024.0);
 
+        Console.WriteLine($"║ Memória RAM: {memoriaRAM:F0} GB");
+        Console.WriteLine($"║ Frequência: {frequenciaRAM} MHz");
+        Console.WriteLine($"║ Módulos: {modulosRAM}");
 
+    }
+
+    public static void ExibirRAMBasico()
+    {
+        double memoriaRAM = 0;
+
+        // Informações da memória RAM
+        ManagementObjectSearcher memoria =
+            new ManagementObjectSearcher(
+                "SELECT Capacity, Speed FROM Win32_PhysicalMemory");
+
+        ulong memoriaTotal = 0;
+
+        foreach (ManagementObject ram in memoria.Get())
+        {
+            memoriaTotal += Convert.ToUInt64(ram["Capacity"]);
+        }
+
+        memoriaRAM = memoriaTotal /
+                     (1024.0 * 1024.0 * 1024.0);
+
+        Console.WriteLine($"║ Memória RAM: {memoriaRAM:F0} GB");
+
+    }
+
+    public static void ExibirWindows()
+    {
         string versaoWindows = "Não encontrado";
         string ativacaoWindows = "Não encontrado";
 
@@ -138,31 +320,33 @@ class InformacoesPC
             ativacaoWindows = "Não ativado";
         }
 
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║            NEXORA > FERRAMENTAS > INFORMAÇÕES           ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
-        Console.WriteLine("║");
-        Console.WriteLine("║ Informações do Computador:");
-        Console.WriteLine("║");
-        Console.WriteLine($"║ Nome do Dispositivo: {Environment.MachineName}");
-        Console.WriteLine("║");
-        Console.WriteLine($"║ Processador: {nomeProcessador}");
-        Console.WriteLine($"║ Frequência: {clockAtual:F2} GHz");
-        Console.WriteLine($"║ Núcleos: {nucleos}");
-        Console.WriteLine($"║ Threads: {threads}");
-        Console.WriteLine("║");
-        Console.WriteLine($"║ Placa de Vídeo: {nomeGPU}");
-        Console.WriteLine($"║ VRAM: {vram:F2} GB");
-        Console.WriteLine($"║ Driver: {driverGPU}");
-        Console.WriteLine("║");
-        Console.WriteLine($"║ Memória RAM: {memoriaRAM:F0} GB");
-        Console.WriteLine($"║ Frequência: {frequenciaRAM} MHz");
-        Console.WriteLine($"║ Módulos: {modulosRAM}");
-        Console.WriteLine("║");
         Console.WriteLine($"║ Sistema Operacional: {versaoWindows}");
         Console.WriteLine($"║ Status Ativação: {ativacaoWindows}");
-        Console.WriteLine("║");
-        Console.WriteLine("║ 0. Voltar");
+    }
+
+    public static void ExibirWindowsBasico()
+    {
+        string versaoWindows = "Não encontrado";
+
+        // Informacoes Sistema
+        ManagementObjectSearcher sistema =
+            new ManagementObjectSearcher(
+                "SELECT Caption, Version FROM Win32_OperatingSystem");
+
+        foreach (ManagementObject os in sistema.Get())
+        {
+            string nome = os["Caption"]?.ToString().Replace("Microsoft ", "") ?? "";
+
+            versaoWindows = $"{nome}";
+        }
+
+        Console.WriteLine($"║ Sistema Operacional: {versaoWindows}");
+    }
+
+    public static void ExibirRodape()
+    {
+        Console.WriteLine("║                                                          ");
+        Console.WriteLine("║ 0. Voltar                                                ");
         Console.WriteLine("╚══════════════════════════════════════════════════════════");
     }
 }

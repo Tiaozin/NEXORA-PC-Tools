@@ -1,4 +1,5 @@
 using System;
+using System.Management;
 
 class Menu
 {
@@ -101,5 +102,24 @@ class Menu
         Console.WriteLine("║ 0. Voltar                                               ║");
         Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
     }
+
+    public static void ExibirSubMenuInformacoes()
+    {
+        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║            NEXORA > FERRAMENTAS > INFORMAÇÕES           ║");
+        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
+        Console.WriteLine("║                                                         ║");
+        Console.WriteLine("║ 1. Informações Completas                                ║");
+        Console.WriteLine("║ 2. Informações Básicas                                  ║");
+        Console.WriteLine("║                                                         ║");
+        Console.WriteLine("║ 3. Processador                                          ║");
+        Console.WriteLine("║ 4. Placa de Vídeo                                       ║");
+        Console.WriteLine("║ 5. Memória RAM                                          ║");
+        Console.WriteLine("║ 6. Windows                                              ║");
+        Console.WriteLine("║                                                         ║");
+        Console.WriteLine("║ 0. Voltar                                               ║");
+        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+    }
+
 
 }
