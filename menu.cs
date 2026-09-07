@@ -76,5 +76,15 @@ class Menu
         Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
     }
 
-    
+    public static void ExibirSubMenuEnergia()
+    {
+        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║             NEXORA > FERRAMENTAS > OTIMIZAÇÃO           ║");
+        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
+        Console.WriteLine("║                                                         ║");
+        Console.WriteLine("║ 1. Ativar plano de energia 'Desempenho Máximo'          ║");
+        Console.WriteLine("║                                                         ║");
+        Console.WriteLine("║ 0. Voltar                                               ║");
+        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+    }
 }
