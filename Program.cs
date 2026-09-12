@@ -74,10 +74,7 @@ class Program
             switch (op)
             {
                 case 1:
-                    // Funcao pra ativar o Windows
-                    break;
-                case 2:
-                    AtivacaoWindows.MostrarStatusWindows();
+                    AtivacaoWindows.ExecutarAtivacao();
                     break;
 
                 case 0:

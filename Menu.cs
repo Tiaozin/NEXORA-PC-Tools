@@ -27,13 +27,23 @@ class Menu
     {
         Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
         Console.WriteLine("║               NEXORA > SISTEMAS > ATIVAÇÃO              ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ 1. Ativar Windows                                       ║");
-        Console.WriteLine("║ 2. Verificar status de ativação                         ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ 0. Voltar                                               ║");
-        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
+        Console.WriteLine("║                                                          ");
+        if (AtivacaoWindows.VerificarStatusWindows())
+        {
+            Console.WriteLine("║ Status do Windows: Ativado");
+            Console.WriteLine("║                                                          ");
+            InformacoesPC.ExibirWindowsBasico();
+        }
+        else
+        {
+            Console.WriteLine("║ Status do Windows: Desativado");
+            Console.WriteLine("║                                                          ");
+            Console.WriteLine("║ 1. Ativar Windows                                        ");
+        }
+        Console.WriteLine("║                                                          ");
+        Console.WriteLine("║ 0. Voltar                                                ");
+        Console.WriteLine("╚══════════════════════════════════════════════════════════");
     }
 
     public static void ExibirSubMenuDefender()
