@@ -76,9 +76,8 @@ class Program
                 case 1:
                     // Funcao pra ativar o Windows
                     break;
-
                 case 2:
-                    // Funcao pra verificar se Windows esta ativado
+                    AtivacaoWindows.MostrarStatusWindows();
                     break;
 
                 case 0:
@@ -315,6 +314,10 @@ class Program
                     break;
 
                 case 6:
+                    InformacoesPC.ExibirInformacoesArmazenamento();
+                    break;
+                
+                case 7:
                     InformacoesPC.ExibirInformacoesWindows();
                     break;
 

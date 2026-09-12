@@ -376,50 +376,50 @@ class InformacoesPC
         Console.WriteLine($"║ Sistema Operacional: {versaoWindows}");
     }
 
-public static void ExibirArmazenamento()
-{
-    DriveInfo[] discos = DriveInfo.GetDrives();
-
-    foreach (DriveInfo disco in discos)
+    public static void ExibirArmazenamento()
     {
-        if (!disco.IsReady)
-            continue;
+        DriveInfo[] discos = DriveInfo.GetDrives();
 
-        double capacidade = disco.TotalSize /
-                            (1024.0 * 1024.0 * 1024.0);
+        foreach (DriveInfo disco in discos)
+        {
+            if (!disco.IsReady)
+                continue;
 
-        double livre = disco.AvailableFreeSpace /
-                       (1024.0 * 1024.0 * 1024.0);
+            double capacidade = disco.TotalSize /
+                                (1024.0 * 1024.0 * 1024.0);
 
-        double usado = capacidade - livre;
+            double livre = disco.AvailableFreeSpace /
+                           (1024.0 * 1024.0 * 1024.0);
 
-        Console.WriteLine($"║ Unidade: {disco.Name}");
-        Console.WriteLine($"║ Tipo: {disco.DriveType}");
-        Console.WriteLine($"║ Capacidade: {capacidade:F2} GB");
-        Console.WriteLine($"║ Usado: {usado:F2} GB");
-        Console.WriteLine($"║ Livre: {livre:F2} GB");
-        Console.WriteLine("║");
+            double usado = capacidade - livre;
+
+            Console.WriteLine($"║ Unidade: {disco.Name}");
+            Console.WriteLine($"║ Tipo: {disco.DriveType}");
+            Console.WriteLine($"║ Capacidade: {capacidade:F2} GB");
+            Console.WriteLine($"║ Usado: {usado:F2} GB");
+            Console.WriteLine($"║ Livre: {livre:F2} GB");
+            Console.WriteLine("║");
+        }
     }
-}
 
-public static void ExibirArmazenamentoBasico()
-{
-    DriveInfo[] discos = DriveInfo.GetDrives();
-
-    foreach (DriveInfo disco in discos)
+    public static void ExibirArmazenamentoBasico()
     {
-        if (!disco.IsReady)
-            continue;
+        DriveInfo[] discos = DriveInfo.GetDrives();
 
-        double capacidade = disco.TotalSize /
-                            (1024.0 * 1024.0 * 1024.0);
+        foreach (DriveInfo disco in discos)
+        {
+            if (!disco.IsReady)
+                continue;
 
-        double livre = disco.AvailableFreeSpace /
-                       (1024.0 * 1024.0 * 1024.0);
+            double capacidade = disco.TotalSize /
+                                (1024.0 * 1024.0 * 1024.0);
 
-        Console.WriteLine($"║ Armazenamento {disco.Name}: {capacidade:F2} GB ({livre:F2} GB livres)");
+            double livre = disco.AvailableFreeSpace /
+                           (1024.0 * 1024.0 * 1024.0);
+
+            Console.WriteLine($"║ Armazenamento {disco.Name}: {capacidade:F2} GB ({livre:F2} GB livres)");
+        }
     }
-}
     public static void ExibirRodape()
     {
         Console.WriteLine("║                                                          ");
