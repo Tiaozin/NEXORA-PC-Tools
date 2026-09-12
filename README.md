@@ -8,7 +8,7 @@ O **NEXORA PC Tools** é um projeto desenvolvido em **C#** com o objetivo de reu
 
 ## 📌 Funcionalidades planejadas
 
-- [ ] Ativação do Windows
+- [x] Ativação do Windows
 - [ ] Desativar Defender
 - [ ] Desativar Windows Update
 - [ ] Instalação de programas
