@@ -103,15 +103,14 @@ class Program
             switch (op)
             {
                 case 1:
-                    // Funcao pra ativar o Defender
-                    break;
-
-                case 2:
-                    // Funcao pra desativar Defender
-                    break;
-
-                case 3:
-                    // Funcao pra verificar Defender
+                    if (WindowsDefender.VerificarStatus())
+                    {
+                        WindowsDefender.DesativarDefender();
+                    }
+                    else
+                    {
+                        WindowsDefender.AtivarDefender();
+                    }
                     break;
 
                 case 0:

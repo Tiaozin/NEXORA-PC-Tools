@@ -50,14 +50,23 @@ class Menu
     {
         Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
         Console.WriteLine("║               NEXORA > SISTEMAS > DEFENDER              ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ 1. Ativar Windows Defender                              ║");
-        Console.WriteLine("║ 2. Desativar Windows Defender                           ║");
-        Console.WriteLine("║ 3. Verificar status Windows Defender                    ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ 0. Voltar                                               ║");
-        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
+        Console.WriteLine("║                                                         ");
+        if (WindowsDefender.VerificarStatus())
+        {
+            Console.WriteLine("║ Status do Windows Defender: Ativado");
+            Console.WriteLine("║                                                          ");
+            Console.WriteLine("║ 1. Desativar Windows Defender                            ");
+        }
+        else
+        {
+            Console.WriteLine("║ Status do Windows Defender: Desativado");
+            Console.WriteLine("║                                                          ");
+            Console.WriteLine("║ 1. Ativar Windows Defender                               ");
+        }
+        Console.WriteLine("║                                                          ");
+        Console.WriteLine("║ 0. Voltar                                                ");
+        Console.WriteLine("╚══════════════════════════════════════════════════════════");
     }
 
     public static void ExibirSubMenuUpdate()

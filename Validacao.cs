@@ -13,4 +13,17 @@ class Validacao
         }
         return valor;
     }
+
+    public static string LerTexto(string mensagem)
+    {
+        Console.Write(mensagem);
+        string entrada = Console.ReadLine() ?? "";
+        while (string.IsNullOrWhiteSpace(entrada))
+        {
+            Console.WriteLine("Esse campo é obrigatório!");
+            Console.Write(mensagem);
+            entrada = Console.ReadLine() ?? "";
+        }
+        return entrada;
+    }
 }

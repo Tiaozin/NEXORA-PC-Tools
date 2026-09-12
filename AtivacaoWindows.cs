@@ -4,20 +4,6 @@ using System.Diagnostics;
 
 public static class AtivacaoWindows
 {
-    public static void Ativacao(string comando)
-    {
-        ProcessStartInfo processo = new ProcessStartInfo
-        {
-            FileName = "powershell.exe",
-            Arguments = $"-NoProfile -Command \"{comando}\"",
-            UseShellExecute = true,
-            Verb = "runas"
-        };
-
-        Process processoPowerShell = Process.Start(processo);
-
-        processoPowerShell?.WaitForExit();
-    }
 
     public static void ExecutarAtivacao()
     {
@@ -35,7 +21,7 @@ public static class AtivacaoWindows
         Console.WriteLine("║ Pressione qualquer tecla para continuar a ativação...                                                ");
         Console.WriteLine("╚══════════════════════════════════════════════════════════");
         Console.ReadKey();
-        Ativacao("irm https://get.activated.win | iex");
+        ExecutarComandos.ExecutarPowerShell("irm https://get.activated.win | iex");
     }
     public static bool VerificarStatusWindows()
     {
