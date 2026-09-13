@@ -16,7 +16,7 @@ class Menu
         Console.WriteLine("║ 2. Windows Defender        | 7. Energia                 ║");
         Console.WriteLine("║ 3. Windows Update          | 8. Drivers                 ║");
         Console.WriteLine("║ 4. Instalar Programas      | 9. Informações do PC       ║");
-        Console.WriteLine("║ 5. Desinstalar             | 10. Limpeza                ║");
+        Console.WriteLine("║ 5. Desinstalar Programas   | 10. Limpeza                ║");
         Console.WriteLine("║                                                         ║");
         Console.WriteLine("║ 0. Sair                                                 ║");
         Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
@@ -75,9 +75,18 @@ class Menu
         Console.WriteLine("║                NEXORA > SISTEMAS > UPDATE               ║");
         Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
         Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ 1. Ativar Windows Update                                ║");
-        Console.WriteLine("║ 2. Desativar Windows Update                             ║");
-        Console.WriteLine("║ 3. Verificar status Windows Update                      ║");
+        if (WindowsUpdate.VerificarStatus())
+        {
+            Console.WriteLine("║ Status do Windows Update: Ativado");
+            Console.WriteLine("║                                                          ");
+            Console.WriteLine("║ 1. Desativar Windows Defender                            ");
+        }
+        else
+        {
+            Console.WriteLine("║ Status do Windows Update: Desativado");
+            Console.WriteLine("║                                                          ");
+            Console.WriteLine("║ 1. Ativar Windows Defender                               ");
+        }
         Console.WriteLine("║                                                         ║");
         Console.WriteLine("║ 0. Voltar                                               ║");
         Console.WriteLine("╚═════════════════════════════════════════════════════════╝");

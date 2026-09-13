@@ -104,13 +104,9 @@ class Program
             {
                 case 1:
                     if (WindowsDefender.VerificarStatus())
-                    {
                         WindowsDefender.DesativarDefender();
-                    }
                     else
-                    {
                         WindowsDefender.AtivarDefender();
-                    }
                     break;
 
                 case 0:
@@ -139,15 +135,10 @@ class Program
             switch (op)
             {
                 case 1:
-                    // Funcao pra ativar o Update
-                    break;
-
-                case 2:
-                    // Funcao pra desativar Update
-                    break;
-
-                case 3:
-                    // Funcao pra verificar Update
+                    if (WindowsUpdate.VerificarStatus())
+                        WindowsUpdate.DesativarUpdate();
+                    else
+                        WindowsUpdate.AtivarUpdate();
                     break;
 
                 case 0:
@@ -312,7 +303,7 @@ class Program
                 case 6:
                     InformacoesPC.ExibirInformacoesArmazenamento();
                     break;
-                
+
                 case 7:
                     InformacoesPC.ExibirInformacoesWindows();
                     break;

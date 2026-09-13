@@ -1,50 +1,60 @@
 using System;
 using System.Diagnostics;
-class WindowsDefender
+
+class WindowsUpdate
 {
     public static bool VerificarStatus()
     {
         ProcessStartInfo processo = new ProcessStartInfo
         {
             FileName = "powershell.exe",
-            Arguments = "-NoProfile -Command \"(Get-MpComputerStatus).AntivirusEnabled\"",
+            Arguments =
+                "-NoProfile -Command " +
+                "\"$valor = (Get-ItemProperty -Path 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU' -Name 'NoAutoUpdate' -ErrorAction SilentlyContinue).NoAutoUpdate; " +
+                "if ($valor -eq 1) { 'False' } else { 'True' }\"",
+
             UseShellExecute = false,
             RedirectStandardOutput = true,
             CreateNoWindow = true
         };
 
-        using (Process? resultado = Process.Start(processo))
-        {
-            if (resultado == null)
-                return false;
+        using Process? resultado = Process.Start(processo);
 
-            string saida = resultado.StandardOutput.ReadToEnd().Trim();
+        if (resultado == null)
+            return false;
 
-            resultado.WaitForExit();
+        string saida = resultado.StandardOutput.ReadToEnd().Trim();
 
-            return saida.Equals("True", StringComparison.OrdinalIgnoreCase);
-        }
+        resultado.WaitForExit();
+
+        return saida.Equals("True", StringComparison.OrdinalIgnoreCase);
     }
 
-    public static void DesativarDefender()
+    public static void DesativarUpdate()
     {
+
         Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║               NEXORA > SISTEMAS > DEFENDER              ║");
+        Console.WriteLine("║                NEXORA > SISTEMAS > UPDATE               ║");
         Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
         Console.WriteLine("║                                                          ");
-        Console.WriteLine("║ Status do Windows Defender: Ativado                      ");
+        Console.WriteLine("║ Status do Windows Update: Ativado                        ");
         Console.WriteLine("║                                                          ");
-        Console.WriteLine("║ Tem certeza que quer desativar o Windows Defender? (s/n) ");
+        Console.WriteLine("║ Tem certeza que quer desativar o Windows Update  ? (s/n) ");
         Console.WriteLine("║                                                          ");
         Console.WriteLine("╚══════════════════════════════════════════════════════════");
 
-        
+
         while (true)
         {
             string resposta = Validacao.LerTexto("Digite uma opção: ");
             if (resposta == "s" || resposta == "S")
             {
-                ExecutarComandos.ExecutarCMD("REG ADD \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\" /V DisableAntiSpyware /t REG_DWORD /D 1 /F");
+                ExecutarComandos.ExecutarPowerShell(
+        "$caminho = \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU\"; " +
+        "if (!(Test-Path $caminho)) { New-Item -Path $caminho -Force | Out-Null }; " +
+        "New-ItemProperty -Path $caminho -Name \"NoAutoUpdate\" -PropertyType DWord -Value 1 -Force | Out-Null; " +
+        "gpupdate /force"
+    );
                 break;
             }
             else if (resposta == "n" || resposta == "N")
@@ -55,16 +65,19 @@ class WindowsDefender
             else
                 Console.WriteLine("Opção inválida!");
         }
+
+
+
     }
-    public static void AtivarDefender()
+    public static void AtivarUpdate()
     {
         Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║               NEXORA > SISTEMAS > DEFENDER              ║");
+        Console.WriteLine("║                NEXORA > SISTEMAS > UPDATE               ║");
         Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
         Console.WriteLine("║                                                          ");
-        Console.WriteLine("║ Status do Windows Defender: Desativado                   ");
+        Console.WriteLine("║ Status do Windows Update: Desativado                     ");
         Console.WriteLine("║                                                          ");
-        Console.WriteLine("║ Tem certeza que quer ativar o Windows Defender? (s/n)    ");
+        Console.WriteLine("║ Tem certeza que quer ativar o Windows Update  ? (s/n)    ");
         Console.WriteLine("║                                                          ");
         Console.WriteLine("╚══════════════════════════════════════════════════════════");
 
@@ -73,7 +86,11 @@ class WindowsDefender
             string resposta = Validacao.LerTexto("Digite uma opção: ");
             if (resposta == "s" || resposta == "S")
             {
-                ExecutarComandos.ExecutarCMD("REG DELETE \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\" /V DisableAntiSpyware /F");
+                ExecutarComandos.ExecutarPowerShell(
+        "Remove-ItemProperty -Path \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU\" " +
+        "-Name \"NoAutoUpdate\" -ErrorAction SilentlyContinue; " +
+        "gpupdate /force"
+    );
                 break;
             }
             else if (resposta == "n" || resposta == "N")
@@ -84,7 +101,6 @@ class WindowsDefender
             else
                 Console.WriteLine("Opção inválida!");
         }
+
     }
-
-
 }

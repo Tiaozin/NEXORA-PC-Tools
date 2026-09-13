@@ -17,7 +17,10 @@ class ExecutarComandos
             ProcessStartInfo processo = new ProcessStartInfo
             {
                 FileName = "powershell.exe",
-                Arguments = $"-NoProfile -EncodedCommand {comandoBase64}",
+ 
+                Arguments = $"-NoProfile -NoExit -EncodedCommand {comandoBase64}", // aqui mostra os resultados
+
+                // Arguments = $"-NoProfile -EncodedCommand {comandoBase64}", Aqui é pra nem abrir os codigos no powershell
                 UseShellExecute = true,
                 Verb = "runas"
             };
