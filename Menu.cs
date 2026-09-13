@@ -99,7 +99,8 @@ class Menu
         Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
         Console.WriteLine("║                                                         ║");
         Console.WriteLine("║ 1. Otimização completa                                  ║");
-        Console.WriteLine("║ 2. Desativar serviços desnecessários                    ║");
+        Console.WriteLine("║ 2. Limpeza do sistema                                   ║");
+        Console.WriteLine("║ 3. Restaurar serviços                                   ║");
         Console.WriteLine("║                                                         ║");
         Console.WriteLine("║ 0. Voltar                                               ║");
         Console.WriteLine("╚═════════════════════════════════════════════════════════╝");

@@ -167,11 +167,15 @@ class Program
             switch (op)
             {
                 case 1:
-                    // Funcao pra otimizar
+                    Otimizacao.OtimizacaoCompleta();
                     break;
 
                 case 2:
-                    // Funcao pra desativar programas desnecessarios
+                    LimpezaSistema.Limpar();
+                    break;
+
+                case 3:
+                    Otimizacao.RestaurarServicos();
                     break;
 
                 case 0:
