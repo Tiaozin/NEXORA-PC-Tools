@@ -195,6 +195,7 @@ class Program
     static void SubMenuEnergia()
     {
         int op;
+
         do
         {
             Console.Clear();
@@ -204,23 +205,19 @@ class Program
             switch (op)
             {
                 case 1:
-                    // Funcao pra ativar Desempenho Maximo
+                    Energia.AtivarDesempenhoMaximo();
                     break;
 
                 case 2:
-                    // Funcao pra ativar Alto Desempenho
+                    Energia.AtivarAltoDesempenho();
                     break;
 
                 case 3:
-                    // Funcao pra ativar Equilibrado
+                    Energia.AtivarEquilibrado();
                     break;
 
                 case 4:
-                    // Funcao pra ativar Economia
-                    break;
-
-                case 5:
-                    // Funcao pra verificar plano
+                    Energia.AtivarEconomia();
                     break;
 
                 case 0:

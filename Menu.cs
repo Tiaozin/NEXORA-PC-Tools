@@ -109,14 +109,15 @@ class Menu
     public static void ExibirSubMenuEnergia()
     {
         Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║              NEXORA > FERRAMENTAS > ENERGIA             ║");
+        Console.WriteLine("║              NEXORA > FERRAMENTAS > ENERGIA            ║");
         Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
         Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ 1. Ativar plano de energia 'Desempenho Máximo'          ║");
-        Console.WriteLine("║ 2. Ativar 'Alto Desempenho'                             ║");
-        Console.WriteLine("║ 3. Ativar 'Equilibrado'                                 ║");
-        Console.WriteLine("║ 4. Ativar 'Economia de Energia'                         ║");
-        Console.WriteLine("║ 5. Verificar Plano Atual                                ║");
+        Console.WriteLine($"║ Plano atual: {Energia.ObterPlanoAtual()}");
+        Console.WriteLine("║                                                         ║");
+        Console.WriteLine("║ 1. Ativar plano de energia 'Desempenho Máximo'         ║");
+        Console.WriteLine("║ 2. Ativar 'Alto Desempenho'                            ║");
+        Console.WriteLine("║ 3. Ativar 'Equilibrado'                                ║");
+        Console.WriteLine("║ 4. Ativar 'Economia de Energia'                        ║");
         Console.WriteLine("║                                                         ║");
         Console.WriteLine("║ 0. Voltar                                               ║");
         Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
