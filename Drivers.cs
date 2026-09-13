@@ -1,118 +1,119 @@
 using System;
 using System.Diagnostics;
+using System.Management;
 
 class Drivers
 {
     public static void VerificarDrivers()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║              NEXORA > FERRAMENTAS > DRIVERS            ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ Detectando drivers instalados...                        ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > DRIVERS");
+        UI.Linha("Verificando drivers de vídeo instalados...");
+        UI.LinhaVazia();
 
-        ExecutarComandos.ExecutarPowerShell(
-            "Get-CimInstance Win32_PnPSignedDriver | " +
-            "Where-Object {$_.DeviceName -ne $null} | " +
-            "Select-Object DeviceName, Manufacturer, DriverVersion | " +
-            "Sort-Object DeviceName | " +
-            "Format-Table -AutoSize"
-        );
+        try
+        {
+            ManagementObjectSearcher gpus = new ManagementObjectSearcher(
+                "SELECT Name, DriverVersion, DriverDate, Status FROM Win32_VideoController"
+            );
+
+            foreach (ManagementObject gpu in gpus.Get())
+            {
+                string nome = gpu["Name"]?.ToString() ?? "Não encontrado";
+                string versao = gpu["DriverVersion"]?.ToString() ?? "Não encontrado";
+                string status = gpu["Status"]?.ToString() ?? "Não encontrado";
+                string data = "Não encontrado";
+
+                string? dataBruta = gpu["DriverDate"]?.ToString();
+
+                if (!string.IsNullOrEmpty(dataBruta) && dataBruta.Length >= 8)
+                {
+                    string ano = dataBruta.Substring(0, 4);
+                    string mes = dataBruta.Substring(4, 2);
+                    string dia = dataBruta.Substring(6, 2);
+
+                    data = $"{dia}/{mes}/{ano}";
+                }
+
+                UI.Linha($"Placa de Vídeo: {nome}");
+                UI.Linha($"Versão do Driver: {versao}");
+                UI.Linha($"Data do Driver: {data}");
+                UI.Linha($"Status: {status}");
+                UI.LinhaVazia();
+            }
+        }
+        catch
+        {
+            UI.Linha("⚠ Não foi possível obter os drivers de vídeo.");
+            UI.LinhaVazia();
+        }
+
+        UI.Linha("Verificando dispositivos com problemas...");
+        UI.LinhaVazia();
+
+        int problemas = 0;
+
+        try
+        {
+            ManagementObjectSearcher dispositivos = new ManagementObjectSearcher(
+                "SELECT Name FROM Win32_PNPEntity WHERE ConfigManagerErrorCode != 0"
+            );
+
+            foreach (ManagementObject dispositivo in dispositivos.Get())
+            {
+                string nome = dispositivo["Name"]?.ToString() ?? "Desconhecido";
+
+                UI.Linha($"⚠ {nome}");
+                problemas++;
+            }
+
+            if (problemas == 0)
+                UI.Linha("✓ Nenhum dispositivo com problema encontrado.");
+        }
+        catch
+        {
+            UI.Linha("⚠ Não foi possível verificar os dispositivos.");
+        }
+
+        UI.Rodape();
     }
 
     public static void InstalarNvidia()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║              NEXORA > DRIVERS > NVIDIA                 ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ Será instalado o aplicativo da NVIDIA para             ║");
-        Console.WriteLine("║ gerenciamento e atualização dos drivers.               ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ Tem certeza que deseja continuar? (s/n)                ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
-
-        while (true)
-        {
-            string resposta = Validacao.LerTexto("Digite uma opção: ");
-
-            if (resposta == "s" || resposta == "S")
-            {
-                ExecutarComandos.ExecutarCMD(
-                    "winget install Nvidia.NVIDIAApp " +
-                    "--exact --silent " +
-                    "--accept-package-agreements " +
-                    "--accept-source-agreements"
-                );
-
-                break;
-            }
-            else if (resposta == "n" || resposta == "N")
-            {
-                Console.WriteLine("Voltando...");
-                break;
-            }
-            else
-            {
-                Console.WriteLine("Opção inválida!");
-            }
-        }
+        AbrirPaginaDrivers(
+            "NVIDIA",
+            "Instalar Drivers NVIDIA",
+            "https://www.nvidia.com/Download/index.aspx"
+        );
     }
 
     public static void InstalarAmdGpu()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║               NEXORA > DRIVERS > AMD GPU               ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ Será instalado o AMD Software Adrenalin.               ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ Tem certeza que deseja continuar? (s/n)                ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
-
-        while (true)
-        {
-            string resposta = Validacao.LerTexto("Digite uma opção: ");
-
-            if (resposta == "s" || resposta == "S")
-            {
-                ExecutarComandos.ExecutarCMD(
-                    "winget install " +
-                    "AdvancedMicroDevices.AMDSoftwareAdrenalinEdition " +
-                    "--exact --silent " +
-                    "--accept-package-agreements " +
-                    "--accept-source-agreements"
-                );
-
-                break;
-            }
-            else if (resposta == "n" || resposta == "N")
-            {
-                Console.WriteLine("Voltando...");
-                break;
-            }
-            else
-            {
-                Console.WriteLine("Opção inválida!");
-            }
-        }
+        AbrirPaginaDrivers(
+            "AMD (Placa de Vídeo)",
+            "Instalar Drivers AMD (GPU)",
+            "https://www.amd.com/pt/support"
+        );
     }
 
     public static void InstalarAmdProcessador()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║             NEXORA > DRIVERS > AMD CPU                 ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ Esta opção procura o pacote de chipset AMD disponível. ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ Tem certeza que deseja continuar? (s/n)                ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+        AbrirPaginaDrivers(
+            "AMD (Chipset/Processador)",
+            "Instalar Drivers AMD (Processador)",
+            "https://www.amd.com/pt/support/chipsets"
+        );
+    }
+
+    private static void AbrirPaginaDrivers(string fabricante, string titulo, string url)
+    {
+        UI.Cabecalho("NEXORA > FERRAMENTAS > DRIVERS");
+        UI.Linha(titulo);
+        UI.LinhaVazia();
+        UI.Linha("Isso abrirá o site oficial do fabricante no navegador");
+        UI.Linha("para você baixar e instalar o driver mais recente.");
+        UI.LinhaVazia();
+        UI.Linha($"Deseja abrir a página de drivers {fabricante}? (s/n)");
+        UI.Rodape();
 
         while (true)
         {
@@ -120,9 +121,22 @@ class Drivers
 
             if (resposta == "s" || resposta == "S")
             {
-                ExecutarComandos.ExecutarCMD(
-                    "winget search \"AMD Chipset Software\""
-                );
+                try
+                {
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = url,
+                        UseShellExecute = true
+                    });
+
+                    Console.WriteLine("Página aberta no navegador padrão.");
+                }
+                catch
+                {
+                    Console.WriteLine(
+                        $"Não foi possível abrir o navegador. Acesse manualmente: {url}"
+                    );
+                }
 
                 break;
             }
@@ -140,16 +154,40 @@ class Drivers
 
     public static void VerificarAtualizacoes()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║          NEXORA > DRIVERS > ATUALIZAÇÕES               ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ Procurando atualizações disponíveis...                  ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > DRIVERS");
+        UI.Linha("Verificar atualizações de drivers");
+        UI.LinhaVazia();
+        UI.Linha("O Windows Update será aberto para que você possa");
+        UI.Linha("verificar as atualizações opcionais de drivers.");
+        UI.LinhaVazia();
+        UI.Linha("Deseja continuar? (s/n)");
+        UI.Rodape();
 
-        ExecutarComandos.ExecutarCMD(
-            "winget upgrade"
-        );
+        while (true)
+        {
+            string resposta = Validacao.LerTexto("Digite uma opção: ");
+
+            if (resposta == "s" || resposta == "S")
+            {
+                ExecutarComandos.ExecutarCMD(
+                    "start ms-settings:windowsupdate-action"
+                );
+
+                Console.WriteLine(
+                    "Verifique as atualizações opcionais de drivers na tela do Windows Update."
+                );
+
+                break;
+            }
+            else if (resposta == "n" || resposta == "N")
+            {
+                Console.WriteLine("Voltando...");
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Opção inválida!");
+            }
+        }
     }
 }

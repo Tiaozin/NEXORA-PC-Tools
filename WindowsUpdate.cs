@@ -32,16 +32,11 @@ class WindowsUpdate
 
     public static void DesativarUpdate()
     {
-
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║                NEXORA > SISTEMAS > UPDATE               ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
-        Console.WriteLine("║                                                          ");
-        Console.WriteLine("║ Status do Windows Update: Ativado                        ");
-        Console.WriteLine("║                                                          ");
-        Console.WriteLine("║ Tem certeza que quer desativar o Windows Update  ? (s/n) ");
-        Console.WriteLine("║                                                          ");
-        Console.WriteLine("╚══════════════════════════════════════════════════════════");
+        UI.Cabecalho("NEXORA > SISTEMAS > UPDATE");
+        UI.Linha("Status do Windows Update: Ativado");
+        UI.LinhaVazia();
+        UI.Linha("Tem certeza que quer desativar o Windows Update? (s/n)");
+        UI.Rodape();
 
 
         while (true)
@@ -71,15 +66,11 @@ class WindowsUpdate
     }
     public static void AtivarUpdate()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║                NEXORA > SISTEMAS > UPDATE               ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
-        Console.WriteLine("║                                                          ");
-        Console.WriteLine("║ Status do Windows Update: Desativado                     ");
-        Console.WriteLine("║                                                          ");
-        Console.WriteLine("║ Tem certeza que quer ativar o Windows Update  ? (s/n)    ");
-        Console.WriteLine("║                                                          ");
-        Console.WriteLine("╚══════════════════════════════════════════════════════════");
+        UI.Cabecalho("NEXORA > SISTEMAS > UPDATE");
+        UI.Linha("Status do Windows Update: Desativado");
+        UI.LinhaVazia();
+        UI.Linha("Tem certeza que quer ativar o Windows Update? (s/n)");
+        UI.Rodape();
 
         while (true)
         {

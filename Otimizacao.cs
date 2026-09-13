@@ -28,24 +28,20 @@ class Otimizacao
 
     public static void OtimizacaoCompleta()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║             NEXORA > OTIMIZAÇÃO COMPLETA                ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ Esta função irá executar:                               ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ • Desativação de serviços selecionados                  ║");
-        Console.WriteLine("║ • Limpeza de arquivos temporários                       ║");
-        Console.WriteLine("║ • Limpeza da lixeira                                    ║");
-        Console.WriteLine("║ • Limpeza do cache DNS                                  ║");
-        Console.WriteLine("║ • Limpeza de arquivos do Windows Update                 ║");
-        Console.WriteLine("║ • Limpeza de componentes do Windows                     ║");
-        Console.WriteLine("║ • Limpeza da Otimização de Entrega                      ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ O estado original dos serviços será salvo para          ║");
-        Console.WriteLine("║ permitir a restauração posteriormente.                  ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+        UI.Cabecalho("NEXORA > OTIMIZAÇÃO COMPLETA");
+        UI.Linha("Esta função irá executar:");
+        UI.LinhaVazia();
+        UI.Linha("• Desativação de serviços selecionados");
+        UI.Linha("• Limpeza de arquivos temporários");
+        UI.Linha("• Limpeza da lixeira");
+        UI.Linha("• Limpeza do cache DNS");
+        UI.Linha("• Limpeza de arquivos do Windows Update");
+        UI.Linha("• Limpeza de componentes do Windows");
+        UI.Linha("• Limpeza da Otimização de Entrega");
+        UI.LinhaVazia();
+        UI.Linha("O estado original dos serviços será salvo para");
+        UI.Linha("permitir a restauração posteriormente.");
+        UI.Rodape();
 
         while (true)
         {
@@ -123,15 +119,13 @@ class Otimizacao
             if (servico == "Spooler")
             {
                 Console.WriteLine();
-                Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-                Console.WriteLine("║                     ATENÇÃO                            ║");
-                Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
-                Console.WriteLine("║ O Spooler de Impressão é necessário para o             ║");
-                Console.WriteLine("║ funcionamento das impressoras do Windows.              ║");
-                Console.WriteLine("║                                                         ║");
-                Console.WriteLine("║ Se ele for desativado, as impressoras poderão          ║");
-                Console.WriteLine("║ deixar de funcionar.                                   ║");
-                Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+                UI.Cabecalho("NEXORA > OTIMIZAÇÃO > ATENÇÃO");
+                UI.Linha("O Spooler de Impressão é necessário para o");
+                UI.Linha("funcionamento das impressoras do Windows.");
+                UI.LinhaVazia();
+                UI.Linha("Se ele for desativado, as impressoras poderão");
+                UI.Linha("deixar de funcionar.");
+                UI.Rodape();
 
                 while (true)
                 {
@@ -188,14 +182,10 @@ class Otimizacao
             return;
         }
 
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║             NEXORA > RESTAURAR SERVIÇOS                 ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ Os serviços serão restaurados para o estado anterior    ║");
-        Console.WriteLine("║ à última otimização.                                    ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+        UI.Cabecalho("NEXORA > RESTAURAR SERVIÇOS");
+        UI.Linha("Os serviços serão restaurados para o estado anterior");
+        UI.Linha("à última otimização.");
+        UI.Rodape();
 
         while (true)
         {

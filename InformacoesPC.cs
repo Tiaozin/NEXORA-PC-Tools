@@ -6,37 +6,30 @@ class InformacoesPC
 {
     public static void ExibirInformacoesCompletas()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║            NEXORA > FERRAMENTAS > INFORMAÇÕES           ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
-        Console.WriteLine("║");
-        Console.WriteLine("║ Informações do Computador:");
-        Console.WriteLine("║");
-        Console.WriteLine($"║ Nome do Dispositivo: {Environment.MachineName}");
-        Console.WriteLine("║");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > INFORMAÇÕES");
+        UI.Linha("Informações do Computador:");
+        UI.LinhaVazia();
+        UI.Linha($"Nome do Dispositivo: {Environment.MachineName}");
+        UI.LinhaVazia();
         ExibirPlacaMae();
-        Console.WriteLine("║");
+        UI.LinhaVazia();
         ExibirCPU();
-        Console.WriteLine("║");
+        UI.LinhaVazia();
         ExibirGPU();
-        Console.WriteLine("║");
+        UI.LinhaVazia();
         ExibirRAM();
-        Console.WriteLine("║");
+        UI.LinhaVazia();
         ExibirArmazenamento();
-        Console.WriteLine("║");
         ExibirWindows();
         ExibirRodape();
     }
 
     public static void ExibirInformacoesBasicas()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║       NEXORA > FERRAMENTAS > INFORMAÇÕES > BÁSICAS      ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
-        Console.WriteLine("║");
-        Console.WriteLine("║ Informações Básicas:");
-        Console.WriteLine("║");
-        Console.WriteLine($"║ Nome do Dispositivo: {Environment.MachineName}");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > INFORMAÇÕES > BÁSICAS");
+        UI.Linha("Informações Básicas:");
+        UI.LinhaVazia();
+        UI.Linha($"Nome do Dispositivo: {Environment.MachineName}");
         ExibirCPUBasico();
         ExibirGPUBasico();
         ExibirRAMBasico();
@@ -47,50 +40,35 @@ class InformacoesPC
 
     public static void ExibirInformacoesCPU()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║         NEXORA > FERRAMENTAS > INFORMAÇÕES > CPU        ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
-        Console.WriteLine("║");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > INFORMAÇÕES > CPU");
         ExibirCPU();
         ExibirRodape();
     }
 
     public static void ExibirInformacoesGPU()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║         NEXORA > FERRAMENTAS > INFORMAÇÕES > GPU        ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
-        Console.WriteLine("║");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > INFORMAÇÕES > GPU");
         ExibirGPU();
         ExibirRodape();
     }
 
     public static void ExibirInformacoesRAM()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║         NEXORA > FERRAMENTAS > INFORMAÇÕES > RAM        ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
-        Console.WriteLine("║");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > INFORMAÇÕES > RAM");
         ExibirRAM();
         ExibirRodape();
     }
 
     public static void ExibirInformacoesArmazenamento()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║    NEXORA > FERRAMENTAS > INFORMAÇÕES > ARMAZENAMENTO   ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
-        Console.WriteLine("║");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > INFORMAÇÕES > ARMAZENAMENTO");
         ExibirArmazenamento();
         ExibirRodape();
     }
 
     public static void ExibirInformacoesWindows()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║       NEXORA > FERRAMENTAS > INFORMAÇÕES > WINDOWS      ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
-        Console.WriteLine("║");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > INFORMAÇÕES > WINDOWS");
         ExibirWindows();
         ExibirRodape();
     }
@@ -111,7 +89,7 @@ class InformacoesPC
             modelo = placa["Product"]?.ToString() ?? "Não encontrado";
         }
 
-        Console.WriteLine($"║ Placa-mãe: {fabricante} {modelo}");
+        UI.Linha($"Placa-mãe: {fabricante} {modelo}");
     }
 
     public static void ExibirCPU()
@@ -136,10 +114,10 @@ class InformacoesPC
             threads = Convert.ToInt32(cpu["NumberOfLogicalProcessors"]);
         }
 
-        Console.WriteLine($"║ Processador: {nomeProcessador}");
-        Console.WriteLine($"║ Frequência: {clockAtual:F2} GHz");
-        Console.WriteLine($"║ Núcleos: {nucleos}");
-        Console.WriteLine($"║ Threads: {threads}");
+        UI.Linha($"Processador: {nomeProcessador}");
+        UI.Linha($"Frequência: {clockAtual:F2} GHz");
+        UI.Linha($"Núcleos: {nucleos}");
+        UI.Linha($"Threads: {threads}");
 
     }
 
@@ -157,7 +135,7 @@ class InformacoesPC
             nomeProcessador = cpu["Name"]?.ToString() ?? "Não encontrado";
         }
 
-        Console.WriteLine($"║ Processador: {nomeProcessador}");
+        UI.Linha($"Processador: {nomeProcessador}");
     }
 
     public static void ExibirGPU()
@@ -217,9 +195,9 @@ class InformacoesPC
             }
         }
 
-        Console.WriteLine($"║ Placa de Vídeo: {nomeGPU}");
-        Console.WriteLine($"║ VRAM: {vram:F2} GB");
-        Console.WriteLine($"║ Driver: {driverGPU}");
+        UI.Linha($"Placa de Vídeo: {nomeGPU}");
+        UI.Linha($"VRAM: {vram:F2} GB");
+        UI.Linha($"Driver: {driverGPU}");
 
     }
 
@@ -261,7 +239,7 @@ class InformacoesPC
             }
         }
 
-        Console.WriteLine($"║ Placa de Vídeo: {nomeGPU}");
+        UI.Linha($"Placa de Vídeo: {nomeGPU}");
 
     }
 
@@ -288,9 +266,9 @@ class InformacoesPC
         memoriaRAM = memoriaTotal /
                      (1024.0 * 1024.0 * 1024.0);
 
-        Console.WriteLine($"║ Memória RAM: {memoriaRAM:F0} GB");
-        Console.WriteLine($"║ Frequência: {frequenciaRAM} MHz");
-        Console.WriteLine($"║ Módulos: {modulosRAM}");
+        UI.Linha($"Memória RAM: {memoriaRAM:F0} GB");
+        UI.Linha($"Frequência: {frequenciaRAM} MHz");
+        UI.Linha($"Módulos: {modulosRAM}");
 
     }
 
@@ -313,7 +291,7 @@ class InformacoesPC
         memoriaRAM = memoriaTotal /
                      (1024.0 * 1024.0 * 1024.0);
 
-        Console.WriteLine($"║ Memória RAM: {memoriaRAM:F0} GB");
+        UI.Linha($"Memória RAM: {memoriaRAM:F0} GB");
 
     }
 
@@ -353,8 +331,8 @@ class InformacoesPC
             ativacaoWindows = "Não ativado";
         }
 
-        Console.WriteLine($"║ Sistema Operacional: {versaoWindows}");
-        Console.WriteLine($"║ Status Ativação: {ativacaoWindows}");
+        UI.Linha($"Sistema Operacional: {versaoWindows}");
+        UI.Linha($"Status Ativação: {ativacaoWindows}");
     }
 
     public static void ExibirWindowsBasico()
@@ -373,7 +351,7 @@ class InformacoesPC
             versaoWindows = $"{nome}";
         }
 
-        Console.WriteLine($"║ Sistema Operacional: {versaoWindows}");
+        UI.Linha($"Sistema Operacional: {versaoWindows}");
     }
 
     public static void ExibirArmazenamento()
@@ -393,12 +371,12 @@ class InformacoesPC
 
             double usado = capacidade - livre;
 
-            Console.WriteLine($"║ Unidade: {disco.Name}");
-            Console.WriteLine($"║ Tipo: {disco.DriveType}");
-            Console.WriteLine($"║ Capacidade: {capacidade:F2} GB");
-            Console.WriteLine($"║ Usado: {usado:F2} GB");
-            Console.WriteLine($"║ Livre: {livre:F2} GB");
-            Console.WriteLine("║");
+            UI.Linha($"Unidade: {disco.Name}");
+            UI.Linha($"Tipo: {disco.DriveType}");
+            UI.Linha($"Capacidade: {capacidade:F2} GB");
+            UI.Linha($"Usado: {usado:F2} GB");
+            UI.Linha($"Livre: {livre:F2} GB");
+            UI.LinhaVazia();
         }
     }
 
@@ -417,13 +395,13 @@ class InformacoesPC
             double livre = disco.AvailableFreeSpace /
                            (1024.0 * 1024.0 * 1024.0);
 
-            Console.WriteLine($"║ Armazenamento {disco.Name}: {capacidade:F2} GB ({livre:F2} GB livres)");
+            UI.Linha($"Armazenamento {disco.Name}: {capacidade:F2} GB ({livre:F2} GB livres)");
         }
     }
     public static void ExibirRodape()
     {
-        Console.WriteLine("║                                                          ");
-        Console.WriteLine("║ 0. Voltar                                                ");
-        Console.WriteLine("╚══════════════════════════════════════════════════════════");
+        UI.LinhaVazia();
+        UI.Item("0", "Voltar");
+        UI.Rodape();
     }
 }

@@ -28,17 +28,13 @@ class WindowsDefender
 
     public static void DesativarDefender()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║               NEXORA > SISTEMAS > DEFENDER              ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
-        Console.WriteLine("║                                                          ");
-        Console.WriteLine("║ Status do Windows Defender: Ativado                      ");
-        Console.WriteLine("║                                                          ");
-        Console.WriteLine("║ Tem certeza que quer desativar o Windows Defender? (s/n) ");
-        Console.WriteLine("║                                                          ");
-        Console.WriteLine("╚══════════════════════════════════════════════════════════");
+        UI.Cabecalho("NEXORA > SISTEMAS > DEFENDER");
+        UI.Linha("Status do Windows Defender: Ativado");
+        UI.LinhaVazia();
+        UI.Linha("Tem certeza que quer desativar o Windows Defender? (s/n)");
+        UI.Rodape();
 
-        
+
         while (true)
         {
             string resposta = Validacao.LerTexto("Digite uma opção: ");
@@ -58,15 +54,11 @@ class WindowsDefender
     }
     public static void AtivarDefender()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║               NEXORA > SISTEMAS > DEFENDER              ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
-        Console.WriteLine("║                                                          ");
-        Console.WriteLine("║ Status do Windows Defender: Desativado                   ");
-        Console.WriteLine("║                                                          ");
-        Console.WriteLine("║ Tem certeza que quer ativar o Windows Defender? (s/n)    ");
-        Console.WriteLine("║                                                          ");
-        Console.WriteLine("╚══════════════════════════════════════════════════════════");
+        UI.Cabecalho("NEXORA > SISTEMAS > DEFENDER");
+        UI.Linha("Status do Windows Defender: Desativado");
+        UI.LinhaVazia();
+        UI.Linha("Tem certeza que quer ativar o Windows Defender? (s/n)");
+        UI.Rodape();
 
         while (true)
         {

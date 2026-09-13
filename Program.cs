@@ -3,6 +3,8 @@ class Program
 {
     static void Main()
     {
+        UI.ConfigurarJanela();
+
         Console.ForegroundColor = ConsoleColor.Blue;
         int op;
         do
@@ -12,9 +14,12 @@ class Program
             switch (op)
             {
                 case 0:
-                    Console.Write("Tem certeza que quer sair? (s/n): ");
-                    string resposta = Console.ReadLine() ?? "";
-                    if (resposta == "s")
+                    UI.Cabecalho("NEXORA > SAIR");
+                    UI.Linha("Tem certeza que quer sair? (s/n)");
+                    UI.Rodape();
+
+                    string resposta = Validacao.LerTexto("Digite uma opção: ");
+                    if (resposta == "s" || resposta == "S")
                     {
                         Console.WriteLine("Fechando o programa...");
                     }

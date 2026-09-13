@@ -3,178 +3,162 @@ using System.Management;
 
 class Menu
 {
+    // Monta uma linha de duas colunas (usada apenas no menu principal)
+    private static string DuasColunas(string esquerda, string direita)
+    {
+        return esquerda.PadRight(27) + "| " + direita;
+    }
+
     public static void ExibirMenuPrincipal()
     {
         Console.Clear();
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║                         NEXORA                          ║");
-        Console.WriteLine("║                        PC Tools                         ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
-        Console.WriteLine("║         SISTEMAS           |        FERRAMENTAS         ║");
-        Console.WriteLine("║                            |                            ║");
-        Console.WriteLine("║ 1. Ativação                | 6. Otimização              ║");
-        Console.WriteLine("║ 2. Windows Defender        | 7. Energia                 ║");
-        Console.WriteLine("║ 3. Windows Update          | 8. Drivers                 ║");
-        Console.WriteLine("║ 4. Instalar Programas      | 9. Informações do PC       ║");
-        Console.WriteLine("║ 5. Desinstalar Programas   | 10. Limpeza                ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ 0. Sair                                                 ║");
-        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+        UI.Cabecalho("NEXORA - PC TOOLS");
+        UI.Linha(DuasColunas("SISTEMAS", "FERRAMENTAS"));
+        UI.LinhaVazia();
+        UI.Linha(DuasColunas("1. Ativação", "6. Otimização"));
+        UI.Linha(DuasColunas("2. Windows Defender", "7. Energia"));
+        UI.Linha(DuasColunas("3. Windows Update", "8. Drivers"));
+        UI.Linha(DuasColunas("4. Instalar Programas", "9. Informações do PC"));
+        UI.Linha(DuasColunas("5. Desinstalar Programas", "10. Limpeza"));
+        UI.LinhaVazia();
+        UI.Item("0", "Sair");
+        UI.Rodape();
         Console.WriteLine();
     }
 
     public static void ExibirSubMenuAtivacao()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║               NEXORA > SISTEMAS > ATIVAÇÃO              ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
-        Console.WriteLine("║                                                          ");
+        UI.Cabecalho("NEXORA > SISTEMAS > ATIVAÇÃO");
+
         if (AtivacaoWindows.VerificarStatusWindows())
         {
-            Console.WriteLine("║ Status do Windows: Ativado");
-            Console.WriteLine("║                                                          ");
+            UI.Linha("Status do Windows: Ativado");
+            UI.LinhaVazia();
             InformacoesPC.ExibirWindowsBasico();
         }
         else
         {
-            Console.WriteLine("║ Status do Windows: Desativado");
-            Console.WriteLine("║                                                          ");
-            Console.WriteLine("║ 1. Ativar Windows                                        ");
+            UI.Linha("Status do Windows: Desativado");
+            UI.LinhaVazia();
+            UI.Item("1", "Ativar Windows");
         }
-        Console.WriteLine("║                                                          ");
-        Console.WriteLine("║ 0. Voltar                                                ");
-        Console.WriteLine("╚══════════════════════════════════════════════════════════");
+
+        UI.LinhaVazia();
+        UI.Item("0", "Voltar");
+        UI.Rodape();
     }
 
     public static void ExibirSubMenuDefender()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║               NEXORA > SISTEMAS > DEFENDER              ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
-        Console.WriteLine("║                                                         ");
+        UI.Cabecalho("NEXORA > SISTEMAS > DEFENDER");
+
         if (WindowsDefender.VerificarStatus())
         {
-            Console.WriteLine("║ Status do Windows Defender: Ativado");
-            Console.WriteLine("║                                                          ");
-            Console.WriteLine("║ 1. Desativar Windows Defender                            ");
+            UI.Linha("Status do Windows Defender: Ativado");
+            UI.LinhaVazia();
+            UI.Item("1", "Desativar Windows Defender");
         }
         else
         {
-            Console.WriteLine("║ Status do Windows Defender: Desativado");
-            Console.WriteLine("║                                                          ");
-            Console.WriteLine("║ 1. Ativar Windows Defender                               ");
+            UI.Linha("Status do Windows Defender: Desativado");
+            UI.LinhaVazia();
+            UI.Item("1", "Ativar Windows Defender");
         }
-        Console.WriteLine("║                                                          ");
-        Console.WriteLine("║ 0. Voltar                                                ");
-        Console.WriteLine("╚══════════════════════════════════════════════════════════");
+
+        UI.LinhaVazia();
+        UI.Item("0", "Voltar");
+        UI.Rodape();
     }
 
     public static void ExibirSubMenuUpdate()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║                NEXORA > SISTEMAS > UPDATE               ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
-        Console.WriteLine("║                                                         ║");
+        UI.Cabecalho("NEXORA > SISTEMAS > UPDATE");
+
         if (WindowsUpdate.VerificarStatus())
         {
-            Console.WriteLine("║ Status do Windows Update: Ativado");
-            Console.WriteLine("║                                                          ");
-            Console.WriteLine("║ 1. Desativar Windows Defender                            ");
+            UI.Linha("Status do Windows Update: Ativado");
+            UI.LinhaVazia();
+            UI.Item("1", "Desativar Windows Update");
         }
         else
         {
-            Console.WriteLine("║ Status do Windows Update: Desativado");
-            Console.WriteLine("║                                                          ");
-            Console.WriteLine("║ 1. Ativar Windows Defender                               ");
+            UI.Linha("Status do Windows Update: Desativado");
+            UI.LinhaVazia();
+            UI.Item("1", "Ativar Windows Update");
         }
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ 0. Voltar                                               ║");
-        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+
+        UI.LinhaVazia();
+        UI.Item("0", "Voltar");
+        UI.Rodape();
     }
 
     public static void ExibirSubMenuOtimizacao()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║             NEXORA > FERRAMENTAS > OTIMIZAÇÃO           ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ 1. Otimização completa                                  ║");
-        Console.WriteLine("║ 2. Restaurar serviços                                   ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ 0. Voltar                                               ║");
-        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > OTIMIZAÇÃO");
+        UI.Item("1", "Otimização completa");
+        UI.Item("2", "Restaurar serviços");
+        UI.LinhaVazia();
+        UI.Item("0", "Voltar");
+        UI.Rodape();
     }
 
     public static void ExibirSubMenuEnergia()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║              NEXORA > FERRAMENTAS > ENERGIA            ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine($"║ Plano atual: {Energia.ObterPlanoAtual()}");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ 1. Ativar plano de energia 'Desempenho Máximo'         ║");
-        Console.WriteLine("║ 2. Ativar 'Alto Desempenho'                            ║");
-        Console.WriteLine("║ 3. Ativar 'Equilibrado'                                ║");
-        Console.WriteLine("║ 4. Ativar 'Economia de Energia'                        ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ 0. Voltar                                               ║");
-        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > ENERGIA");
+        UI.Linha($"Plano atual: {Energia.ObterPlanoAtual()}");
+        UI.LinhaVazia();
+        UI.Item("1", "Ativar plano 'Desempenho Máximo'");
+        UI.Item("2", "Ativar plano 'Alto Desempenho'");
+        UI.Item("3", "Ativar plano 'Equilibrado'");
+        UI.Item("4", "Ativar plano 'Economia de Energia'");
+        UI.LinhaVazia();
+        UI.Item("0", "Voltar");
+        UI.Rodape();
     }
 
     public static void ExibirSubMenuDrivers()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║              NEXORA > FERRAMENTAS > DRIVERS            ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ 1. Verificar drivers                                   ║");
-        Console.WriteLine("║ 2. Instalar Drivers NVIDIA                             ║");
-        Console.WriteLine("║ 3. Instalar Drivers AMD (GPU)                          ║");
-        Console.WriteLine("║ 4. Instalar Drivers AMD (Processador)                  ║");
-        Console.WriteLine("║ 5. Verificar atualizações de drivers                   ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ 0. Voltar                                               ║");
-        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > DRIVERS");
+        UI.Item("1", "Verificar drivers");
+        UI.Item("2", "Instalar Drivers NVIDIA");
+        UI.Item("3", "Instalar Drivers AMD (GPU)");
+        UI.Item("4", "Instalar Drivers AMD (Processador)");
+        UI.Item("5", "Verificar atualizações de drivers");
+        UI.LinhaVazia();
+        UI.Item("0", "Voltar");
+        UI.Rodape();
     }
 
     public static void ExibirSubMenuInformacoes()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║            NEXORA > FERRAMENTAS > INFORMAÇÕES           ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ 1. Informações Completas                                ║");
-        Console.WriteLine("║ 2. Informações Básicas                                  ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ 3. Processador                                          ║");
-        Console.WriteLine("║ 4. Placa de Vídeo                                       ║");
-        Console.WriteLine("║ 5. Memória RAM                                          ║");
-        Console.WriteLine("║ 6. Armazenamento                                        ║");
-        Console.WriteLine("║ 7. Windows                                              ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ 0. Voltar                                               ║");
-        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > INFORMAÇÕES");
+        UI.Item("1", "Informações Completas");
+        UI.Item("2", "Informações Básicas");
+        UI.LinhaVazia();
+        UI.Item("3", "Processador");
+        UI.Item("4", "Placa de Vídeo");
+        UI.Item("5", "Memória RAM");
+        UI.Item("6", "Armazenamento");
+        UI.Item("7", "Windows");
+        UI.LinhaVazia();
+        UI.Item("0", "Voltar");
+        UI.Rodape();
     }
 
     public static void ExibirSubMenuLimpeza()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║              NEXORA > FERRAMENTAS > LIMPEZA            ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ 1. Esvaziar Lixeira                                     ║");
-        Console.WriteLine("║ 2. Apagar Arquivos Temporários                          ║");
-        Console.WriteLine("║ 3. Limpar Cache do Windows                              ║");
-        Console.WriteLine("║ 4. Limpar Cache de DNS                                  ║");
-        Console.WriteLine("║ 5. Limpar Arquivos de Atualização do Windows            ║");
-        Console.WriteLine("║ 6. Limpar Miniaturas                                    ║");
-        Console.WriteLine("║ 7. Limpar Relatórios de Erros                           ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ 8. Limpeza Completa                                     ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ 0. Voltar                                               ║");
-        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > LIMPEZA");
+        UI.Item("1", "Esvaziar Lixeira");
+        UI.Item("2", "Apagar Arquivos Temporários");
+        UI.Item("3", "Limpar Cache do Windows");
+        UI.Item("4", "Limpar Cache de DNS");
+        UI.Item("5", "Limpar Arquivos de Atualização do Windows");
+        UI.Item("6", "Limpar Miniaturas");
+        UI.Item("7", "Limpar Relatórios de Erros");
+        UI.LinhaVazia();
+        UI.Item("8", "Limpeza Completa");
+        UI.LinhaVazia();
+        UI.Item("0", "Voltar");
+        UI.Rodape();
     }
-
 }

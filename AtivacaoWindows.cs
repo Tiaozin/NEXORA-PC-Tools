@@ -7,19 +7,17 @@ public static class AtivacaoWindows
 
     public static void ExecutarAtivacao()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║           NEXORA > SISTEMAS > ATIVAÇÃO > STATUS         ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
-        Console.WriteLine("║");
-        Console.WriteLine("║ Passos para ativar seu Windows:");
-        Console.WriteLine("║");
-        Console.WriteLine("║ 1. Aceite o pedido de administrador");
-        Console.WriteLine("║ 2. Aperte 1 do seu teclado para abrir a ativação");
-        Console.WriteLine("║ 3. Aperte 1 novamente e espere ativar");
-        Console.WriteLine("║ 4. Feche o PowerShell e seja feliz :)");
-        Console.WriteLine("║");
-        Console.WriteLine("║ Pressione qualquer tecla para continuar a ativação...                                                ");
-        Console.WriteLine("╚══════════════════════════════════════════════════════════");
+        UI.Cabecalho("NEXORA > SISTEMAS > ATIVAÇÃO > STATUS");
+        UI.Linha("Passos para ativar seu Windows:");
+        UI.LinhaVazia();
+        UI.Linha("1. Aceite o pedido de administrador");
+        UI.Linha("2. Aperte 1 do seu teclado para abrir a ativação");
+        UI.Linha("3. Aperte 1 novamente e espere ativar");
+        UI.Linha("4. Feche o PowerShell e seja feliz :)");
+        UI.LinhaVazia();
+        UI.Linha("Pressione qualquer tecla para continuar a ativação...");
+        UI.Rodape();
+
         Console.ReadKey();
         ExecutarComandos.ExecutarPowerShell("irm https://get.activated.win | iex");
     }
@@ -50,23 +48,17 @@ public static class AtivacaoWindows
 
     public static void MostrarStatusWindows()
     {
+        UI.Cabecalho("NEXORA > SISTEMAS > ATIVAÇÃO > STATUS");
+
         if (VerificarStatusWindows())
         {
-            Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-            Console.WriteLine("║           NEXORA > SISTEMAS > ATIVAÇÃO > STATUS         ║");
-            Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
-            Console.WriteLine("║");
-            Console.WriteLine("║ Status do Windows: Ativado");
+            UI.Linha("Status do Windows: Ativado");
             InformacoesPC.ExibirRodape();
             return;
         }
         else
         {
-            Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-            Console.WriteLine("║           NEXORA > SISTEMAS > ATIVAÇÃO > STATUS         ║");
-            Console.WriteLine("╠═════════════════════════════════════════════════════════╝");
-            Console.WriteLine("║");
-            Console.WriteLine("║ Status do Windows: Desativado");
+            UI.Linha("Status do Windows: Desativado");
             InformacoesPC.ExibirRodape();
             return;
         }

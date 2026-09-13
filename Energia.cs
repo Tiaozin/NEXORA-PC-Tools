@@ -66,16 +66,11 @@ class Energia
 
     public static void AtivarDesempenhoMaximo()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║              NEXORA > FERRAMENTAS > ENERGIA             ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ Plano: Desempenho Máximo                                ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ Tem certeza que quer ativar o plano de Desempenho       ║");
-        Console.WriteLine("║ Máximo? (s/n)                                           ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > ENERGIA");
+        UI.Linha("Plano: Desempenho Máximo");
+        UI.LinhaVazia();
+        UI.Linha("Tem certeza que quer ativar o plano de Desempenho Máximo? (s/n)");
+        UI.Rodape();
 
         while (true)
         {
@@ -121,16 +116,11 @@ class Energia
 
     public static void AtivarAltoDesempenho()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║              NEXORA > FERRAMENTAS > ENERGIA             ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ Plano: Alto Desempenho                                  ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ Tem certeza que quer ativar o plano Alto Desempenho?    ║");
-        Console.WriteLine("║ (s/n)                                                   ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > ENERGIA");
+        UI.Linha("Plano: Alto Desempenho");
+        UI.LinhaVazia();
+        UI.Linha("Tem certeza que quer ativar o plano Alto Desempenho? (s/n)");
+        UI.Rodape();
 
         while (true)
         {
@@ -162,15 +152,11 @@ class Energia
 
     public static void AtivarEquilibrado()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║              NEXORA > FERRAMENTAS > ENERGIA             ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ Plano: Equilibrado                                      ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ Tem certeza que quer ativar o plano Equilibrado? (s/n)  ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > ENERGIA");
+        UI.Linha("Plano: Equilibrado");
+        UI.LinhaVazia();
+        UI.Linha("Tem certeza que quer ativar o plano Equilibrado? (s/n)");
+        UI.Rodape();
 
         while (true)
         {
@@ -202,15 +188,11 @@ class Energia
 
     public static void AtivarEconomia()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║              NEXORA > FERRAMENTAS > ENERGIA             ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ Plano: Economia de Energia                              ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ Tem certeza que quer ativar Economia de Energia? (s/n)  ║");
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > ENERGIA");
+        UI.Linha("Plano: Economia de Energia");
+        UI.LinhaVazia();
+        UI.Linha("Tem certeza que quer ativar Economia de Energia? (s/n)");
+        UI.Rodape();
 
         while (true)
         {

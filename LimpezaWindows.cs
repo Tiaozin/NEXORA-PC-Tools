@@ -3,31 +3,35 @@ using System.IO;
 
 class LimpezaSistema
 {
+    // Executa todas as limpezas dentro de uma única tela
     public static void Limpar()
     {
-        Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║              NEXORA > LIMPEZA DO SISTEMA               ║");
-        Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
-        Console.WriteLine("║                                                         ║");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > LIMPEZA");
 
-        LimparTemporarios();
-        LimparLixeira();
-        LimparDNS();
-        LimparDownloadsWindowsUpdate();
-        LimparCleanmgr();
-        LimparComponentesWindows();
-        LimparDeliveryOptimization();
-        LimparMiniaturas();
-        LimparRelatoriosErros();
+        ExecutarLimparTemporarios();
+        ExecutarLimparLixeira();
+        ExecutarLimparDNS();
+        ExecutarLimparDownloadsWindowsUpdate();
+        ExecutarLimparCleanmgr();
+        ExecutarLimparComponentesWindows();
+        ExecutarLimparDeliveryOptimization();
+        ExecutarLimparMiniaturas();
+        ExecutarLimparRelatoriosErros();
 
-        Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ Limpeza concluída.                                      ║");
-        Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
+        UI.Linha("Limpeza concluída.");
+        UI.Rodape();
     }
 
     public static void LimparTemporarios()
     {
-        Console.WriteLine("→ Limpando arquivos temporários...");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > LIMPEZA");
+        ExecutarLimparTemporarios();
+        UI.Rodape();
+    }
+
+    private static void ExecutarLimparTemporarios()
+    {
+        UI.Linha("Limpando arquivos temporários...");
 
         try
         {
@@ -40,14 +44,14 @@ class LimpezaSistema
 
             LimparPasta(tempWindows);
 
-            Console.WriteLine("  ✓ Temporários processados.");
+            UI.Linha("✓ Temporários processados.");
         }
         catch
         {
-            Console.WriteLine(
-                "  ⚠ Não foi possível limpar todos os temporários."
-            );
+            UI.Linha("⚠ Não foi possível limpar todos os temporários.");
         }
+
+        UI.LinhaVazia();
     }
 
     private static void LimparPasta(string caminho)
@@ -82,29 +86,52 @@ class LimpezaSistema
 
     public static void LimparLixeira()
     {
-        Console.WriteLine("→ Limpando lixeira...");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > LIMPEZA");
+        ExecutarLimparLixeira();
+        UI.Rodape();
+    }
+
+    private static void ExecutarLimparLixeira()
+    {
+        UI.Linha("Limpando lixeira...");
 
         ExecutarComandos.ExecutarPowerShell(
             "Clear-RecycleBin -Force -ErrorAction SilentlyContinue"
         );
 
-        Console.WriteLine("  ✓ Lixeira processada.");
+        UI.Linha("✓ Lixeira processada.");
+        UI.LinhaVazia();
     }
 
     public static void LimparDNS()
     {
-        Console.WriteLine("→ Limpando cache DNS...");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > LIMPEZA");
+        ExecutarLimparDNS();
+        UI.Rodape();
+    }
+
+    private static void ExecutarLimparDNS()
+    {
+        UI.Linha("Limpando cache DNS...");
 
         ExecutarComandos.ExecutarCMD(
             "ipconfig /flushdns"
         );
 
-        Console.WriteLine("  ✓ Cache DNS limpo.");
+        UI.Linha("✓ Cache DNS limpo.");
+        UI.LinhaVazia();
     }
 
     public static void LimparDownloadsWindowsUpdate()
     {
-        Console.WriteLine("→ Limpando atualizações baixadas...");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > LIMPEZA");
+        ExecutarLimparDownloadsWindowsUpdate();
+        UI.Rodape();
+    }
+
+    private static void ExecutarLimparDownloadsWindowsUpdate()
+    {
+        UI.Linha("Limpando atualizações baixadas...");
 
         ExecutarComandos.ExecutarCMD(
             "net stop wuauserv; " +
@@ -115,62 +142,98 @@ class LimpezaSistema
             "net start wuauserv"
         );
 
-        Console.WriteLine(
-            "  ✓ Downloads do Windows Update processados."
-        );
+        UI.Linha("✓ Downloads do Windows Update processados.");
+        UI.LinhaVazia();
     }
 
     public static void LimparCleanmgr()
     {
-        Console.WriteLine("→ Executando Limpeza de Disco do Windows...");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > LIMPEZA");
+        ExecutarLimparCleanmgr();
+        UI.Rodape();
+    }
+
+    private static void ExecutarLimparCleanmgr()
+    {
+        UI.Linha("Executando Limpeza de Disco do Windows...");
 
         ExecutarComandos.ExecutarCMD(
             "cleanmgr /verylowdisk"
         );
 
-        Console.WriteLine("  ✓ Limpeza de Disco executada.");
+        UI.Linha("✓ Limpeza de Disco executada.");
+        UI.LinhaVazia();
     }
 
-    public static void LimparComponentesWindows()
+    private static void ExecutarLimparComponentesWindows()
     {
-        Console.WriteLine("→ Limpando componentes antigos do Windows...");
-        Console.WriteLine("  Isso pode demorar alguns minutos.");
+        UI.Linha("Limpando componentes antigos do Windows...");
+        UI.Linha("Isso pode demorar alguns minutos.");
 
         ExecutarComandos.ExecutarCMD(
             "DISM /Online /Cleanup-Image /StartComponentCleanup"
         );
 
-        Console.WriteLine("  ✓ Componentes processados.");
+        UI.Linha("✓ Componentes processados.");
+        UI.LinhaVazia();
     }
 
-    public static void LimparDeliveryOptimization()
+    public static void LimparComponentesWindows()
     {
-        Console.WriteLine(
-            "→ Limpando cache da Otimização de Entrega..."
-        );
+        UI.Cabecalho("NEXORA > FERRAMENTAS > LIMPEZA");
+        ExecutarLimparComponentesWindows();
+        UI.Rodape();
+    }
+
+    private static void ExecutarLimparDeliveryOptimization()
+    {
+        UI.Linha("Limpando cache da Otimização de Entrega...");
 
         ExecutarComandos.ExecutarPowerShell(
             "Delete-DeliveryOptimizationCache " +
             "-Force -ErrorAction SilentlyContinue"
         );
 
-        Console.WriteLine("  ✓ Cache processado.");
+        UI.Linha("✓ Cache processado.");
+        UI.LinhaVazia();
+    }
+
+    public static void LimparDeliveryOptimization()
+    {
+        UI.Cabecalho("NEXORA > FERRAMENTAS > LIMPEZA");
+        ExecutarLimparDeliveryOptimization();
+        UI.Rodape();
     }
 
     public static void LimparMiniaturas()
     {
-        Console.WriteLine("→ Limpando cache de miniaturas...");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > LIMPEZA");
+        ExecutarLimparMiniaturas();
+        UI.Rodape();
+    }
+
+    private static void ExecutarLimparMiniaturas()
+    {
+        UI.Linha("Limpando cache de miniaturas...");
 
         ExecutarComandos.ExecutarCMD(
             "del /f /s /q \"%LocalAppData%\\Microsoft\\Windows\\Explorer\\thumbcache_*.db\""
         );
 
-        Console.WriteLine("  ✓ Cache de miniaturas processado.");
+        UI.Linha("✓ Cache de miniaturas processado.");
+        UI.LinhaVazia();
     }
 
     public static void LimparRelatoriosErros()
     {
-        Console.WriteLine("→ Limpando relatórios de erros do Windows...");
+        UI.Cabecalho("NEXORA > FERRAMENTAS > LIMPEZA");
+        ExecutarLimparRelatoriosErros();
+        UI.Rodape();
+    }
+
+    private static void ExecutarLimparRelatoriosErros()
+    {
+        UI.Linha("Limpando relatórios de erros do Windows...");
 
         ExecutarComandos.ExecutarPowerShell(
             "Remove-Item \"$env:ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\*\" " +
@@ -183,6 +246,7 @@ class LimpezaSistema
             "-Recurse -Force -ErrorAction SilentlyContinue"
         );
 
-        Console.WriteLine("  ✓ Relatórios de erros processados.");
+        UI.Linha("✓ Relatórios de erros processados.");
+        UI.LinhaVazia();
     }
 }
