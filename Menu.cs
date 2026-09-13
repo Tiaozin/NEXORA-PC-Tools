@@ -99,8 +99,7 @@ class Menu
         Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
         Console.WriteLine("║                                                         ║");
         Console.WriteLine("║ 1. Otimização completa                                  ║");
-        Console.WriteLine("║ 2. Limpeza do sistema                                   ║");
-        Console.WriteLine("║ 3. Restaurar serviços                                   ║");
+        Console.WriteLine("║ 2. Restaurar serviços                                   ║");
         Console.WriteLine("║                                                         ║");
         Console.WriteLine("║ 0. Voltar                                               ║");
         Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
@@ -126,12 +125,14 @@ class Menu
     public static void ExibirSubMenuDrivers()
     {
         Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║              NEXORA > FERRAMENTAS > DRIVERS             ║");
+        Console.WriteLine("║              NEXORA > FERRAMENTAS > DRIVERS            ║");
         Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
         Console.WriteLine("║                                                         ║");
-        Console.WriteLine("║ 1. Instalar Drivers NVIDIA                              ║");
-        Console.WriteLine("║ 2. Instalar Drivers AMD (Placa de Vídeo)                ║");
-        Console.WriteLine("║ 3. Instalar Drivers AMD (Processador)                   ║");
+        Console.WriteLine("║ 1. Verificar drivers                                   ║");
+        Console.WriteLine("║ 2. Instalar Drivers NVIDIA                             ║");
+        Console.WriteLine("║ 3. Instalar Drivers AMD (GPU)                          ║");
+        Console.WriteLine("║ 4. Instalar Drivers AMD (Processador)                  ║");
+        Console.WriteLine("║ 5. Verificar atualizações de drivers                   ║");
         Console.WriteLine("║                                                         ║");
         Console.WriteLine("║ 0. Voltar                                               ║");
         Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
@@ -159,7 +160,7 @@ class Menu
     public static void ExibirSubMenuLimpeza()
     {
         Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║              NEXORA > FERRAMENTAS > LIMPEZA             ║");
+        Console.WriteLine("║              NEXORA > FERRAMENTAS > LIMPEZA            ║");
         Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
         Console.WriteLine("║                                                         ║");
         Console.WriteLine("║ 1. Esvaziar Lixeira                                     ║");
@@ -169,7 +170,8 @@ class Menu
         Console.WriteLine("║ 5. Limpar Arquivos de Atualização do Windows            ║");
         Console.WriteLine("║ 6. Limpar Miniaturas                                    ║");
         Console.WriteLine("║ 7. Limpar Relatórios de Erros                           ║");
-        Console.WriteLine("║ 8. Limpeza Completa Segura                              ║");
+        Console.WriteLine("║                                                         ║");
+        Console.WriteLine("║ 8. Limpeza Completa                                     ║");
         Console.WriteLine("║                                                         ║");
         Console.WriteLine("║ 0. Voltar                                               ║");
         Console.WriteLine("╚═════════════════════════════════════════════════════════╝");

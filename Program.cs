@@ -158,10 +158,12 @@ class Program
     static void SubMenuOtimizacao()
     {
         int op;
+
         do
         {
             Console.Clear();
             Menu.ExibirSubMenuOtimizacao();
+
             op = Validacao.LerNumero("Digite uma Opção: ");
 
             switch (op)
@@ -171,10 +173,6 @@ class Program
                     break;
 
                 case 2:
-                    LimpezaSistema.Limpar();
-                    break;
-
-                case 3:
                     Otimizacao.RestaurarServicos();
                     break;
 
@@ -237,6 +235,7 @@ class Program
     static void SubMenuDrivers()
     {
         int op;
+
         do
         {
             Console.Clear();
@@ -246,15 +245,23 @@ class Program
             switch (op)
             {
                 case 1:
-                    // Funcao pra instalar driver nvidia
+                    Drivers.VerificarDrivers();
                     break;
 
                 case 2:
-                    // Funcao pra instalar driver amd gpu
+                    Drivers.InstalarNvidia();
                     break;
 
                 case 3:
-                    // Funcao pra instalar driver amd cpu
+                    Drivers.InstalarAmdGpu();
+                    break;
+
+                case 4:
+                    Drivers.InstalarAmdProcessador();
+                    break;
+
+                case 5:
+                    Drivers.VerificarAtualizacoes();
                     break;
 
                 case 0:
@@ -267,6 +274,7 @@ class Program
 
             if (op != 0)
                 Console.ReadKey();
+
         } while (op != 0);
     }
 
@@ -325,46 +333,47 @@ class Program
 
     static void SubMenuLimpeza()
     {
-        Menu.ExibirSubMenuLimpeza();
         int op;
+
         do
         {
             Console.Clear();
-            Menu.ExibirSubMenuEnergia();
+            Menu.ExibirSubMenuLimpeza();
+
             op = Validacao.LerNumero("Digite uma Opção: ");
 
             switch (op)
             {
                 case 1:
-                    // Funcao pra Esvaziar Lixeira 
+                    LimpezaSistema.LimparLixeira();
                     break;
 
                 case 2:
-                    // Funcao pra Apagar Arquivos Temporários
+                    LimpezaSistema.LimparTemporarios();
                     break;
 
                 case 3:
-                    // Funcao pra Limpar Cache do Windows
+                    LimpezaSistema.LimparCleanmgr();
                     break;
 
                 case 4:
-                    // Funcao pra Limpar Cache de DNS
+                    LimpezaSistema.LimparDNS();
                     break;
 
                 case 5:
-                    // Funcao pra Limpar Arquivos de Atualização do Windows
+                    LimpezaSistema.LimparDownloadsWindowsUpdate();
                     break;
 
                 case 6:
-                    // Funcao pra Limpar Miniaturas
+                    LimpezaSistema.LimparMiniaturas();
                     break;
 
                 case 7:
-                    // Funcao pra Limpar Relatórios de Erros
+                    LimpezaSistema.LimparRelatoriosErros();
                     break;
 
                 case 8:
-                    // Funcao pra Limpeza Completa Segura
+                    LimpezaSistema.Limpar();
                     break;
 
                 case 0:

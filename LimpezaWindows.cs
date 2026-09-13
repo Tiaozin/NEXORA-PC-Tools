@@ -6,7 +6,7 @@ class LimpezaSistema
     public static void Limpar()
     {
         Console.WriteLine("╔═════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║              NEXORA > LIMPEZA DO SISTEMA                ║");
+        Console.WriteLine("║              NEXORA > LIMPEZA DO SISTEMA               ║");
         Console.WriteLine("╠═════════════════════════════════════════════════════════╣");
         Console.WriteLine("║                                                         ║");
 
@@ -17,13 +17,15 @@ class LimpezaSistema
         LimparCleanmgr();
         LimparComponentesWindows();
         LimparDeliveryOptimization();
+        LimparMiniaturas();
+        LimparRelatoriosErros();
 
         Console.WriteLine("║                                                         ║");
         Console.WriteLine("║ Limpeza concluída.                                      ║");
         Console.WriteLine("╚═════════════════════════════════════════════════════════╝");
     }
 
-    private static void LimparTemporarios()
+    public static void LimparTemporarios()
     {
         Console.WriteLine("→ Limpando arquivos temporários...");
 
@@ -42,7 +44,9 @@ class LimpezaSistema
         }
         catch
         {
-            Console.WriteLine("  ⚠ Não foi possível limpar todos os temporários.");
+            Console.WriteLine(
+                "  ⚠ Não foi possível limpar todos os temporários."
+            );
         }
     }
 
@@ -76,7 +80,7 @@ class LimpezaSistema
         }
     }
 
-    private static void LimparLixeira()
+    public static void LimparLixeira()
     {
         Console.WriteLine("→ Limpando lixeira...");
 
@@ -87,7 +91,7 @@ class LimpezaSistema
         Console.WriteLine("  ✓ Lixeira processada.");
     }
 
-    private static void LimparDNS()
+    public static void LimparDNS()
     {
         Console.WriteLine("→ Limpando cache DNS...");
 
@@ -98,7 +102,7 @@ class LimpezaSistema
         Console.WriteLine("  ✓ Cache DNS limpo.");
     }
 
-    private static void LimparDownloadsWindowsUpdate()
+    public static void LimparDownloadsWindowsUpdate()
     {
         Console.WriteLine("→ Limpando atualizações baixadas...");
 
@@ -111,10 +115,12 @@ class LimpezaSistema
             "net start wuauserv"
         );
 
-        Console.WriteLine("  ✓ Downloads do Windows Update processados.");
+        Console.WriteLine(
+            "  ✓ Downloads do Windows Update processados."
+        );
     }
 
-    private static void LimparCleanmgr()
+    public static void LimparCleanmgr()
     {
         Console.WriteLine("→ Executando Limpeza de Disco do Windows...");
 
@@ -125,7 +131,7 @@ class LimpezaSistema
         Console.WriteLine("  ✓ Limpeza de Disco executada.");
     }
 
-    private static void LimparComponentesWindows()
+    public static void LimparComponentesWindows()
     {
         Console.WriteLine("→ Limpando componentes antigos do Windows...");
         Console.WriteLine("  Isso pode demorar alguns minutos.");
@@ -137,14 +143,46 @@ class LimpezaSistema
         Console.WriteLine("  ✓ Componentes processados.");
     }
 
-    private static void LimparDeliveryOptimization()
+    public static void LimparDeliveryOptimization()
     {
-        Console.WriteLine("→ Limpando cache da Otimização de Entrega...");
+        Console.WriteLine(
+            "→ Limpando cache da Otimização de Entrega..."
+        );
 
         ExecutarComandos.ExecutarPowerShell(
-            "Delete-DeliveryOptimizationCache -Force -ErrorAction SilentlyContinue"
+            "Delete-DeliveryOptimizationCache " +
+            "-Force -ErrorAction SilentlyContinue"
         );
 
         Console.WriteLine("  ✓ Cache processado.");
+    }
+
+    public static void LimparMiniaturas()
+    {
+        Console.WriteLine("→ Limpando cache de miniaturas...");
+
+        ExecutarComandos.ExecutarCMD(
+            "del /f /s /q \"%LocalAppData%\\Microsoft\\Windows\\Explorer\\thumbcache_*.db\""
+        );
+
+        Console.WriteLine("  ✓ Cache de miniaturas processado.");
+    }
+
+    public static void LimparRelatoriosErros()
+    {
+        Console.WriteLine("→ Limpando relatórios de erros do Windows...");
+
+        ExecutarComandos.ExecutarPowerShell(
+            "Remove-Item \"$env:ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\*\" " +
+            "-Recurse -Force -ErrorAction SilentlyContinue; " +
+            "Remove-Item \"$env:ProgramData\\Microsoft\\Windows\\WER\\ReportQueue\\*\" " +
+            "-Recurse -Force -ErrorAction SilentlyContinue; " +
+            "Remove-Item \"$env:LOCALAPPDATA\\Microsoft\\Windows\\WER\\ReportArchive\\*\" " +
+            "-Recurse -Force -ErrorAction SilentlyContinue; " +
+            "Remove-Item \"$env:LOCALAPPDATA\\Microsoft\\Windows\\WER\\ReportQueue\\*\" " +
+            "-Recurse -Force -ErrorAction SilentlyContinue"
+        );
+
+        Console.WriteLine("  ✓ Relatórios de erros processados.");
     }
 }
