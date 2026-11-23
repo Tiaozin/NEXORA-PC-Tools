@@ -1,77 +1,76 @@
-# NEXUS PC Tools
+# NEXORA PC Tools
 
-> 🛠️ Ferramenta para manutenção, otimização e gerenciamento do Windows.
+> 🛠️ Ferramenta para manutenção, otimização, limpeza, energia e diagnóstico do Windows com interface gráfica.
 
-**Status:** 🚧 v1 em desenvolvimento
+**Status:** 🚀 Interface gráfica ativa (WPF / .NET 8)
 
-O **NEXORA PC Tools** é um projeto desenvolvido em **C#** com o objetivo de reunir ferramentas úteis para manutenção, configuração e gerenciamento de computadores Windows em um único programa.
+O **NEXORA PC Tools** é um utilitário desenvolvido em **C#** com **WPF** sobre **.NET 8** para reunir rotinas de manutenção, otimização, limpeza do sistema, gerenciamento de energia, drivers, gerenciamento de programas via **WinGet** e informações de hardware em um único aplicativo.
 
-## 📌 Funcionalidades planejadas
+## 📌 Funcionalidades
 
-- [x] Ativação do Windows
-- [x] Instalação de programas
-- [x] Desinstalação de programas
-- [x] Otimização do Windows
-- [x] Gerenciamento de energia
-- [ ] Instalação de drivers NVIDIA/AMD
-- [x] Informações do PC
-- [x] Limpeza do sistema
-- [ ] Diagnóstico do sistema
-- [ ] Ponto de restauração
-- [ ] Verificação de integridade do Windows
+- [x] **Informações do PC:** exibição de processador e memória via WMI, placa de vídeo via Vortice.DXGI, placa-mãe, sistema operacional e armazenamento.
+- [x] **Ativação do Windows:** verificação do status atual de ativação e acesso ao assistente.
+- [ ] **Programas (WinGet):** instalação rápida em lote, atualização geral (`upgrade --all`), busca de pacotes, instalação e desinstalação por ID. (Está com problemas)
+- [x] **Otimização do Sistema:** desativação de serviços selecionados, backup automático e restauração de serviços.
+- [x] **Planos de Energia:** alternância rápida entre Desempenho Máximo, Alto Desempenho, Equilibrado e Economia de Energia.
+- [x] **Drivers e Dispositivos:** verificação de dispositivos e atalhos para portais de drivers e Windows Update.
+- [x] **Limpeza do Windows:** remoção de arquivos temporários, esvaziamento de lixeira, limpeza de cache DNS, downloads do Windows Update, componentes DISM, cache de miniaturas, relatórios de erro e limpeza completa.
 
-## 💻 Tecnologias
+## 💻 Tecnologias e Dependências
 
-- C#
-- .NET 8
-- Windows
+- **Linguagem / Framework:** C# e .NET 8 (`net8.0-windows` com WPF)
+- **Pacotes NuGet:** `System.Management` e `Vortice.DXGI`
+- **Privilégios:** execução em Modo Administrador configurada via `app.manifest`
+- **Gerenciador de pacotes:** WinGet (Windows Package Manager)
 
-## 🚧 Desenvolvimento
+## ▶️ Como rodar no PC (Agora tem o zip em release para baixar diretamente)
 
-O projeto está atualmente em sua **v1**, ainda em desenvolvimento.
+### 1. Pré-requisitos
 
-A primeira versão será executada pelo **terminal**. Futuramente, o projeto poderá receber uma **interface gráfica**.
+- **Sistema operacional:** Windows 10 ou Windows 11 (64 bits)
+- **.NET 8 SDK:** baixe e instale o [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) para Windows
+- **WinGet (opcional para a aba de programas):** disponível na Microsoft Store (*App Installer*) ou já incluído nas versões mais recentes do Windows
 
-## 🎯 Objetivo
+### 2. Baixar ou clonar o projeto
 
-Criar uma ferramenta simples, prática e centralizada para realizar tarefas comuns de manutenção e configuração do Windows.
+Se estiver usando Git, abra o terminal (PowerShell) e clone o repositório:
 
-## ▶️ Como executar (Por enquanto)
-
-### Requisitos
-
-* Windows
-* [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-
-### Executando o projeto
-
-Clone o repositório:
-
-```bash
+```powershell
 git clone https://github.com/Tiaozin/NEXORA-PC-Tools.git
-```
-
-Entre na pasta do projeto:
-
-```bash
 cd NEXORA-PC-Tools
 ```
 
-Restaure as dependências:
+> Caso tenha baixado o projeto em arquivo `.zip`, extraia a pasta no seu PC e abra o PowerShell dentro da pasta onde está o arquivo `NEXORA PC Tools.csproj`.
 
-```bash
+### 3. Restaurar pacotes e executar
+
+No PowerShell, dentro da pasta do projeto, rode:
+
+```powershell
 dotnet restore
-```
-
-Execute o NEXORA:
-
-```bash
 dotnet run
 ```
 
-> **Observação:** as pastas `bin` e `obj` não são incluídas no repositório, pois são geradas automaticamente pelo .NET durante a compilação.
+O .NET vai baixar as dependências (`System.Management` e `Vortice.DXGI`), compilar o projeto WPF e abrir a janela do **NEXORA PC Tools** (aceite o aviso de Administrador do Windows se o UAC solicitar).
 
+### 4. Gerar executável avulso (opcional)
+
+Se quiser compilar uma versão *Release* ou gerar um executável pronto fora da pasta do código-fonte:
+
+```powershell
+dotnet build -c Release
+```
+
+Ou publique uma pasta autocontida:
+
+```powershell
+dotnet publish -c Release -r win-x64 --self-contained false
+```
+
+Os arquivos compilados ficam dentro da pasta `bin\Release\net8.0-windows\` (ou na pasta `publish` indicada no terminal).
+
+> **Observação:** as pastas `bin` e `obj` são criadas automaticamente pelo .NET durante o build e costumam ficar ignoradas no Git.
 
 ---
 
-**NEXORA PC Tools — v1 em desenvolvimento 🚧**
+**NEXORA PC Tools**
