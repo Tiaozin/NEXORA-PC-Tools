@@ -1,0 +1,800 @@
+<Window x:Class="NEXUS_PC_Tools.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="NEXORA — PC Tools"
+        Icon="pack://application:,,,/Assets/nexora.ico"
+        Height="720"
+        Width="1120"
+        MinHeight="640"
+        MinWidth="960"
+        WindowStartupLocation="CenterScreen"
+        Background="#0D0B14"
+        Foreground="#F5F3FF">
+
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="MenuBtn">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#A79EC2"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="3,0,0,0"/>
+            <Setter Property="Padding" Value="14,11"/>
+            <Setter Property="Margin" Value="10,2"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FontSize" Value="13.5"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#1E1833"/>
+                                <Setter Property="Foreground" Value="#F5F3FF"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button" x:Key="MenuBtnActive" BasedOn="{StaticResource MenuBtn}">
+            <Setter Property="Background" Value="#241747"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="BorderBrush" Value="#8B5CF6"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
+        <Style TargetType="Button" x:Key="ActionBtn">
+            <Setter Property="Background" Value="#7C3AED"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="16,10"/>
+            <Setter Property="Margin" Value="0,0,10,10"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#8B5CF6"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#6D28D9"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button" x:Key="SecondaryBtn" BasedOn="{StaticResource ActionBtn}">
+            <Setter Property="Background" Value="#1E1833"/>
+            <Setter Property="Foreground" Value="#DDD6FE"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="#3B2D63"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#2A2047"/>
+                                <Setter TargetName="Bd" Property="BorderBrush" Value="#7C3AED"/>
+                                <Setter Property="Foreground" Value="#FFFFFF"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button" x:Key="DangerBtn" BasedOn="{StaticResource ActionBtn}">
+            <Setter Property="Background" Value="#BE123C"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#E11D48"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Border" x:Key="CardStyle">
+            <Setter Property="Background" Value="#171326"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Padding" Value="16"/>
+            <Setter Property="BorderBrush" Value="#28213E"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <Style TargetType="CheckBox" x:Key="ModernCheckBox">
+            <Setter Property="Foreground" Value="#E9E5FF"/>
+            <Setter Property="FontSize" Value="13.5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="0,0,16,10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Border x:Name="Wrap"
+                                Background="#171326"
+                                BorderBrush="#28213E"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Padding="12,8">
+                            <StackPanel Orientation="Horizontal">
+                                <Border x:Name="Box"
+                                        Width="18"
+                                        Height="18"
+                                        CornerRadius="5"
+                                        Background="#0D0B14"
+                                        BorderBrush="#4C3B7A"
+                                        BorderThickness="1.5"
+                                        Margin="0,0,9,0"
+                                        VerticalAlignment="Center">
+                                    <TextBlock x:Name="CheckMark"
+                                               Text="✓"
+                                               FontSize="12"
+                                               FontWeight="Bold"
+                                               Foreground="White"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               Visibility="Collapsed"/>
+                                </Border>
+                                <ContentPresenter VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Wrap" Property="BorderBrush" Value="#7C3AED"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="Wrap" Property="Background" Value="#221742"/>
+                                <Setter TargetName="Wrap" Property="BorderBrush" Value="#8B5CF6"/>
+                                <Setter TargetName="Box" Property="Background" Value="#7C3AED"/>
+                                <Setter TargetName="Box" Property="BorderBrush" Value="#8B5CF6"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="245"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0"
+                Background="#120F1D"
+                BorderBrush="#28213E"
+                BorderThickness="0,0,1,0">
+            <DockPanel LastChildFill="False">
+                <StackPanel DockPanel.Dock="Top" Margin="18,22,18,20">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Border Width="42" Height="42" CornerRadius="10" Margin="0,0,12,0">
+                            <Image Source="pack://application:,,,/Assets/nexora_logo.png"
+                                   RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </Border>
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="NEXORA"
+                                       FontSize="20"
+                                       FontWeight="Bold"
+                                       Foreground="#F5F3FF"/>
+                            <TextBlock Text="PC Tools • v2.0"
+                                       FontSize="11.5"
+                                       FontWeight="Medium"
+                                       Foreground="#9F7AEA"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <Border Height="1" Background="#28213E" Margin="0,18,0,0"/>
+                </StackPanel>
+
+                <StackPanel x:Name="SidebarMenu" DockPanel.Dock="Top">
+                    <TextBlock Text="SISTEMAS"
+                               FontSize="10.5"
+                               FontWeight="Bold"
+                               Foreground="#6E648C"
+                               Margin="22,2,0,6"/>
+                    <Button x:Name="BtnNavAtivacao"
+                            Style="{StaticResource MenuBtn}"
+                            Tag="Ativacao"
+                            Click="Nav_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="🔑" Margin="0,0,10,0"/>
+                            <TextBlock Text="Ativação"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="BtnNavProgramas"
+                            Style="{StaticResource MenuBtn}"
+                            Tag="Programas"
+                            Click="Nav_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="📦" Margin="0,0,10,0"/>
+                            <TextBlock Text="Programas (WinGet)"/>
+                        </StackPanel>
+                    </Button>
+
+                    <TextBlock Text="FERRAMENTAS"
+                               FontSize="10.5"
+                               FontWeight="Bold"
+                               Foreground="#6E648C"
+                               Margin="22,18,0,6"/>
+                    <Button x:Name="BtnNavInfo"
+                            Style="{StaticResource MenuBtnActive}"
+                            Tag="Info"
+                            Click="Nav_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="💻" Margin="0,0,10,0"/>
+                            <TextBlock Text="Informações do PC"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="BtnNavOtimizacao"
+                            Style="{StaticResource MenuBtn}"
+                            Tag="Otimizacao"
+                            Click="Nav_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="🚀" Margin="0,0,10,0"/>
+                            <TextBlock Text="Otimização"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="BtnNavEnergia"
+                            Style="{StaticResource MenuBtn}"
+                            Tag="Energia"
+                            Click="Nav_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="⚡" Margin="0,0,10,0"/>
+                            <TextBlock Text="Energia"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="BtnNavDrivers"
+                            Style="{StaticResource MenuBtn}"
+                            Tag="Drivers"
+                            Click="Nav_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="🎮" Margin="0,0,10,0"/>
+                            <TextBlock Text="Drivers"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="BtnNavLimpeza"
+                            Style="{StaticResource MenuBtn}"
+                            Tag="Limpeza"
+                            Click="Nav_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="🧹" Margin="0,0,10,0"/>
+                            <TextBlock Text="Limpeza"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+                <Border DockPanel.Dock="Bottom"
+                        Margin="14,0,14,16"
+                        Padding="12,10"
+                        Background="#171326"
+                        BorderBrush="#28213E"
+                        BorderThickness="1"
+                        CornerRadius="8">
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Width="8" Height="8" Fill="#8B5CF6" Margin="0,0,8,0"/>
+                        <TextBlock Text="Modo Administrador"
+                                   FontSize="11.5"
+                                   Foreground="#A79EC2"/>
+                    </StackPanel>
+                </Border>
+            </DockPanel>
+        </Border>
+
+        <Grid Grid.Column="1" Margin="24,22,24,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="190"/>
+            </Grid.RowDefinitions>
+
+            <ScrollViewer x:Name="PanelInfo"
+                          Grid.Row="0"
+                          VerticalScrollBarVisibility="Auto"
+                          Visibility="Visible"
+                          Margin="0,0,0,14">
+                <StackPanel>
+                    <DockPanel Margin="0,0,0,16">
+                        <StackPanel>
+                            <TextBlock Text="Informações do Computador"
+                                       FontSize="22"
+                                       FontWeight="Bold"
+                                       Foreground="#F5F3FF"/>
+                            <TextBlock Text="Resumo detalhado do hardware e sistema operacional"
+                                       FontSize="12.5"
+                                       Foreground="#A79EC2"
+                                       Margin="0,2,0,0"/>
+                        </StackPanel>
+                        <Border HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Background="#1E1833"
+                                BorderBrush="#3B2D63"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Padding="12,6">
+                            <TextBlock x:Name="TxtDispositivo"
+                                       FontSize="12.5"
+                                       FontWeight="SemiBold"
+                                       Foreground="#C4B5FD"/>
+                        </Border>
+                    </DockPanel>
+
+                    <Border Style="{StaticResource CardStyle}" Margin="0,0,0,10">
+                        <StackPanel>
+                            <TextBlock Text="PROCESSADOR (WMI)"
+                                       FontSize="10.5"
+                                       FontWeight="Bold"
+                                       Foreground="#9F7AEA"/>
+                            <TextBlock x:Name="TxtCpu"
+                                       Text="Carregando..."
+                                       FontSize="15.5"
+                                       FontWeight="SemiBold"
+                                       Margin="0,4,0,2"/>
+                            <TextBlock x:Name="TxtCpuDetalhes"
+                                       FontSize="12.5"
+                                       Foreground="#A79EC2"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Style="{StaticResource CardStyle}" Margin="0,0,0,10">
+                        <StackPanel>
+                            <TextBlock Text="PLACA DE VÍDEO (VORTICE.DXGI)"
+                                       FontSize="10.5"
+                                       FontWeight="Bold"
+                                       Foreground="#9F7AEA"/>
+                            <TextBlock x:Name="TxtGpu"
+                                       Text="Carregando..."
+                                       FontSize="15.5"
+                                       FontWeight="SemiBold"
+                                       Margin="0,4,0,2"/>
+                            <TextBlock x:Name="TxtGpuDetalhes"
+                                       FontSize="12.5"
+                                       Foreground="#A79EC2"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" Style="{StaticResource CardStyle}" Margin="0,0,5,0">
+                            <StackPanel>
+                                <TextBlock Text="MEMÓRIA RAM (WMI)"
+                                           FontSize="10.5"
+                                           FontWeight="Bold"
+                                           Foreground="#9F7AEA"/>
+                                <TextBlock x:Name="TxtRam"
+                                           Text="Carregando..."
+                                           FontSize="15.5"
+                                           FontWeight="SemiBold"
+                                           Margin="0,4,0,2"/>
+                                <TextBlock x:Name="TxtRamDetalhes"
+                                           FontSize="12.5"
+                                           Foreground="#A79EC2"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Grid.Column="1" Style="{StaticResource CardStyle}" Margin="5,0,0,0">
+                            <StackPanel>
+                                <TextBlock Text="PLACA-MÃE &amp; SISTEMA"
+                                           FontSize="10.5"
+                                           FontWeight="Bold"
+                                           Foreground="#9F7AEA"/>
+                                <TextBlock x:Name="TxtPlacaMae"
+                                           Text="Carregando..."
+                                           FontSize="14.5"
+                                           FontWeight="SemiBold"
+                                           Margin="0,4,0,2"/>
+                                <TextBlock x:Name="TxtWindows"
+                                           FontSize="12.5"
+                                           Foreground="#A79EC2"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+
+                    <Border Style="{StaticResource CardStyle}">
+                        <StackPanel>
+                            <TextBlock Text="ARMAZENAMENTO"
+                                       FontSize="10.5"
+                                       FontWeight="Bold"
+                                       Foreground="#9F7AEA"
+                                       Margin="0,0,0,6"/>
+                            <ItemsControl x:Name="ListaDiscos">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Resumo}"
+                                                   FontSize="13"
+                                                   Foreground="#E9E5FF"
+                                                   Margin="0,3"/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+
+            <StackPanel x:Name="PanelAtivacao"
+                        Grid.Row="0"
+                        Visibility="Collapsed">
+                <TextBlock Text="Ativação do Windows"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Margin="0,0,0,4"/>
+                <TextBlock Text="Verifique a licença atual ou inicie o assistente de ativação"
+                           FontSize="12.5"
+                           Foreground="#A79EC2"
+                           Margin="0,0,0,16"/>
+
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <TextBlock x:Name="TxtStatusAtivacao"
+                                   Text="Verificando status..."
+                                   FontSize="16"
+                                   FontWeight="SemiBold"
+                                   Foreground="#C4B5FD"
+                                   Margin="0,0,0,14"/>
+                        <Button x:Name="BtnAtivarWindows"
+                                Content="Ativar Windows"
+                                Style="{StaticResource ActionBtn}"
+                                HorizontalAlignment="Left"
+                                Margin="0,0,0,16"
+                                Click="BtnAtivarWindows_Click"/>
+
+                        <Border Background="#120F1D"
+                                CornerRadius="8"
+                                Padding="16"
+                                BorderBrush="#8B5CF6"
+                                BorderThickness="3,0,0,0">
+                            <StackPanel>
+                                <TextBlock Text="Passos para ativar seu Windows:"
+                                           FontSize="14"
+                                           FontWeight="SemiBold"
+                                           Foreground="#F5F3FF"
+                                           Margin="0,0,0,8"/>
+                                <TextBlock Text="1. Aceite o pedido de administrador (se solicitar)"
+                                           FontSize="13"
+                                           Foreground="#A79EC2"
+                                           Margin="0,0,0,4"/>
+                                <TextBlock Text="2. Aperte 1 no teclado para abrir a ativação"
+                                           FontSize="13"
+                                           Foreground="#A79EC2"
+                                           Margin="0,0,0,4"/>
+                                <TextBlock Text="3. Aperte 1 novamente e aguarde concluir"
+                                           FontSize="13"
+                                           Foreground="#A79EC2"
+                                           Margin="0,0,0,4"/>
+                                <TextBlock Text="4. Feche a janela do PowerShell"
+                                           FontSize="13"
+                                           Foreground="#A79EC2"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <StackPanel x:Name="PanelProgramas"
+                        Grid.Row="0"
+                        Visibility="Collapsed">
+                <TextBlock Text="Gerenciador de Programas (WinGet)"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Margin="0,0,0,4"/>
+                <TextBlock Text="Instale aplicativos essenciais em lote ou pesquise pacotes diretamente pelo WinGet"
+                           FontSize="12.5"
+                           Foreground="#A79EC2"
+                           Margin="0,0,0,16"/>
+
+                <Border Style="{StaticResource CardStyle}" Margin="0,0,0,12">
+                    <StackPanel>
+                        <TextBlock Text="INSTALAÇÃO RÁPIDA"
+                                   FontSize="10.5"
+                                   FontWeight="Bold"
+                                   Foreground="#9F7AEA"
+                                   Margin="0,0,0,10"/>
+                        <WrapPanel x:Name="WrapAppsRapidos" Margin="0,0,0,6">
+                            <CheckBox Content="Google Chrome" Tag="Google.Chrome" Style="{StaticResource ModernCheckBox}"/>
+                            <CheckBox Content="7-Zip" Tag="7zip.7zip" Style="{StaticResource ModernCheckBox}"/>
+                            <CheckBox Content="Discord" Tag="Discord.Discord" Style="{StaticResource ModernCheckBox}"/>
+                            <CheckBox Content="VLC Media Player" Tag="VideoLAN.VLC" Style="{StaticResource ModernCheckBox}"/>
+                            <CheckBox Content="VS Code" Tag="Microsoft.VisualStudioCode" Style="{StaticResource ModernCheckBox}"/>
+                            <CheckBox Content="Steam" Tag="Valve.Steam" Style="{StaticResource ModernCheckBox}"/>
+                            <CheckBox Content="Git" Tag="Git.Git" Style="{StaticResource ModernCheckBox}"/>
+                        </WrapPanel>
+
+                        <WrapPanel>
+                            <Button Content="Instalar Selecionados"
+                                    Style="{StaticResource ActionBtn}"
+                                    Margin="0,0,10,0"
+                                    Click="BtnInstalarSelecionados_Click"/>
+                            <Button Content="Atualizar Todos (Upgrade All)"
+                                    Style="{StaticResource SecondaryBtn}"
+                                    Margin="0"
+                                    Click="BtnWingetUpgradeAll_Click"/>
+                        </WrapPanel>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <TextBlock Text="BUSCA OU PACOTE POR ID"
+                                   FontSize="10.5"
+                                   FontWeight="Bold"
+                                   Foreground="#9F7AEA"
+                                   Margin="0,0,0,10"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="TxtPacoteWinget"
+                                     Width="340"
+                                     Padding="10,9"
+                                     FontSize="13"
+                                     Background="#0D0B14"
+                                     Foreground="#F5F3FF"
+                                     CaretBrush="#8B5CF6"
+                                     BorderBrush="#3B2D63"
+                                     BorderThickness="1"
+                                     Margin="0,0,10,0"/>
+                            <Button Content="Buscar"
+                                    Style="{StaticResource SecondaryBtn}"
+                                    Margin="0,0,8,0"
+                                    Click="BtnWingetSearch_Click"/>
+                            <Button Content="Instalar"
+                                    Style="{StaticResource ActionBtn}"
+                                    Margin="0,0,8,0"
+                                    Click="BtnWingetInstallId_Click"/>
+                            <Button Content="Desinstalar"
+                                    Style="{StaticResource DangerBtn}"
+                                    Margin="0"
+                                    Click="BtnWingetUninstallId_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <StackPanel x:Name="PanelOtimizacao"
+                        Grid.Row="0"
+                        Visibility="Collapsed">
+                <TextBlock Text="Otimização do Sistema"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Margin="0,0,0,4"/>
+                <TextBlock Text="Desativa telemetria e serviços em segundo plano com backup automático"
+                           FontSize="12.5"
+                           Foreground="#A79EC2"
+                           Margin="0,0,0,16"/>
+
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <TextBlock Text="Desativa serviços desnecessários (SysMain, DiagTrack, Xbox, Maps, Fax...), salva backup automático em AppData\\NEXORA e executa a limpeza completa."
+                                   Foreground="#D4CEE8"
+                                   FontSize="13.5"
+                                   TextWrapping="Wrap"
+                                   Margin="0,0,0,14"/>
+
+                        <CheckBox x:Name="ChkDesativarSpooler"
+                                  Content="Desativar também o Spooler de Impressão (não marque se usa impressora)"
+                                  Style="{StaticResource ModernCheckBox}"
+                                  HorizontalAlignment="Left"
+                                  Margin="0,0,0,16"/>
+
+                        <WrapPanel>
+                            <Button Content="Executar Otimização Completa"
+                                    Style="{StaticResource ActionBtn}"
+                                    Margin="0,0,10,0"
+                                    Click="BtnOtimizacaoCompleta_Click"/>
+                            <Button Content="Restaurar Serviços (Backup)"
+                                    Style="{StaticResource SecondaryBtn}"
+                                    Margin="0"
+                                    Click="BtnRestaurarServicos_Click"/>
+                        </WrapPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <StackPanel x:Name="PanelEnergia"
+                        Grid.Row="0"
+                        Visibility="Collapsed">
+                <TextBlock Text="Planos de Energia"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Margin="0,0,0,4"/>
+                <TextBlock Text="Alterne rapidamente o perfil energético do Windows"
+                           FontSize="12.5"
+                           Foreground="#A79EC2"
+                           Margin="0,0,0,16"/>
+
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <Border Background="#1E1833"
+                                BorderBrush="#3B2D63"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Padding="12,8"
+                                HorizontalAlignment="Left"
+                                Margin="0,0,0,16">
+                            <TextBlock x:Name="TxtPlanoAtual"
+                                       Text="Plano atual: carregando..."
+                                       FontSize="14"
+                                       FontWeight="SemiBold"
+                                       Foreground="#C4B5FD"/>
+                        </Border>
+
+                        <WrapPanel>
+                            <Button Content="Desempenho Máximo"
+                                    Style="{StaticResource ActionBtn}"
+                                    Click="BtnEnergiaMax_Click"/>
+                            <Button Content="Alto Desempenho"
+                                    Style="{StaticResource SecondaryBtn}"
+                                    Click="BtnEnergiaAlto_Click"/>
+                            <Button Content="Equilibrado"
+                                    Style="{StaticResource SecondaryBtn}"
+                                    Click="BtnEnergiaEquilibrado_Click"/>
+                            <Button Content="Economia de Energia"
+                                    Style="{StaticResource SecondaryBtn}"
+                                    Click="BtnEnergiaEconomia_Click"/>
+                        </WrapPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <StackPanel x:Name="PanelDrivers"
+                        Grid.Row="0"
+                        Visibility="Collapsed">
+                <TextBlock Text="Drivers e Dispositivos"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Margin="0,0,0,4"/>
+                <TextBlock Text="Diagnóstico de dispositivos e acesso rápido aos portais oficiais"
+                           FontSize="12.5"
+                           Foreground="#A79EC2"
+                           Margin="0,0,0,16"/>
+
+                <Border Style="{StaticResource CardStyle}">
+                    <WrapPanel>
+                        <Button Content="Verificar Drivers e Dispositivos"
+                                Style="{StaticResource ActionBtn}"
+                                Click="BtnVerificarDrivers_Click"/>
+                        <Button Content="Drivers NVIDIA"
+                                Style="{StaticResource SecondaryBtn}"
+                                Click="BtnNvidia_Click"/>
+                        <Button Content="Drivers AMD (GPU)"
+                                Style="{StaticResource SecondaryBtn}"
+                                Click="BtnAmdGpu_Click"/>
+                        <Button Content="Drivers AMD (Chipset)"
+                                Style="{StaticResource SecondaryBtn}"
+                                Click="BtnAmdCpu_Click"/>
+                        <Button Content="Windows Update (Opcionais)"
+                                Style="{StaticResource SecondaryBtn}"
+                                Click="BtnWinUpdateDrivers_Click"/>
+                    </WrapPanel>
+                </Border>
+            </StackPanel>
+
+            <StackPanel x:Name="PanelLimpeza"
+                        Grid.Row="0"
+                        Visibility="Collapsed">
+                <TextBlock Text="Limpeza do Windows"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Margin="0,0,0,4"/>
+                <TextBlock Text="Libere espaço removendo caches, temporários e arquivos residuais do sistema"
+                           FontSize="12.5"
+                           Foreground="#A79EC2"
+                           Margin="0,0,0,16"/>
+
+                <Border Style="{StaticResource CardStyle}">
+                    <WrapPanel>
+                        <Button Content="Limpeza Completa (Tudo)"
+                                Style="{StaticResource ActionBtn}"
+                                Click="BtnLimparTudo_Click"/>
+                        <Button Content="Esvaziar Lixeira"
+                                Style="{StaticResource SecondaryBtn}"
+                                Click="BtnLimparLixeira_Click"/>
+                        <Button Content="Arquivos Temporários"
+                                Style="{StaticResource SecondaryBtn}"
+                                Click="BtnLimparTemp_Click"/>
+                        <Button Content="Limpeza de Disco (Cleanmgr)"
+                                Style="{StaticResource SecondaryBtn}"
+                                Click="BtnLimparCleanmgr_Click"/>
+                        <Button Content="Cache de DNS"
+                                Style="{StaticResource SecondaryBtn}"
+                                Click="BtnLimparDns_Click"/>
+                        <Button Content="Arquivos Windows Update"
+                                Style="{StaticResource SecondaryBtn}"
+                                Click="BtnLimparWU_Click"/>
+                        <Button Content="Componentes Windows (DISM)"
+                                Style="{StaticResource SecondaryBtn}"
+                                Click="BtnLimparDism_Click"/>
+                        <Button Content="Otimização de Entrega"
+                                Style="{StaticResource SecondaryBtn}"
+                                Click="BtnLimparDelivery_Click"/>
+                        <Button Content="Cache de Miniaturas"
+                                Style="{StaticResource SecondaryBtn}"
+                                Click="BtnLimparMiniaturas_Click"/>
+                        <Button Content="Relatórios de Erros"
+                                Style="{StaticResource SecondaryBtn}"
+                                Click="BtnLimparWer_Click"/>
+                    </WrapPanel>
+                </Border>
+            </StackPanel>
+
+            <Border Grid.Row="1"
+                    Background="#09070E"
+                    CornerRadius="10"
+                    BorderBrush="#28213E"
+                    BorderThickness="1"
+                    Padding="12">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <DockPanel Margin="0,0,0,6">
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse Width="7" Height="7" Fill="#8B5CF6" Margin="0,0,8,0"/>
+                            <TextBlock Text="CONSOLE DE EXECUÇÃO"
+                                       FontSize="11"
+                                       FontWeight="Bold"
+                                       Foreground="#9F7AEA"/>
+                        </StackPanel>
+                        <Button Content="Limpar Console"
+                                HorizontalAlignment="Right"
+                                Background="Transparent"
+                                Foreground="#A79EC2"
+                                BorderThickness="0"
+                                FontSize="11.5"
+                                Cursor="Hand"
+                                Click="BtnLimparLog_Click"/>
+                    </DockPanel>
+                    <TextBox x:Name="TxtLog"
+                             Grid.Row="1"
+                             Background="Transparent"
+                             Foreground="#C4B5FD"
+                             BorderThickness="0"
+                             IsReadOnly="True"
+                             VerticalScrollBarVisibility="Auto"
+                             FontFamily="Consolas"
+                             FontSize="12"
+                             TextWrapping="Wrap"/>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

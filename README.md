@@ -1,0 +1,77 @@
+# NEXUS PC Tools
+
+> 🛠️ Ferramenta para manutenção, otimização e gerenciamento do Windows.
+
+**Status:** 🚧 v1 em desenvolvimento
+
+O **NEXORA PC Tools** é um projeto desenvolvido em **C#** com o objetivo de reunir ferramentas úteis para manutenção, configuração e gerenciamento de computadores Windows em um único programa.
+
+## 📌 Funcionalidades planejadas
+
+- [x] Ativação do Windows
+- [x] Instalação de programas
+- [x] Desinstalação de programas
+- [x] Otimização do Windows
+- [x] Gerenciamento de energia
+- [ ] Instalação de drivers NVIDIA/AMD
+- [x] Informações do PC
+- [x] Limpeza do sistema
+- [ ] Diagnóstico do sistema
+- [ ] Ponto de restauração
+- [ ] Verificação de integridade do Windows
+
+## 💻 Tecnologias
+
+- C#
+- .NET 8
+- Windows
+
+## 🚧 Desenvolvimento
+
+O projeto está atualmente em sua **v1**, ainda em desenvolvimento.
+
+A primeira versão será executada pelo **terminal**. Futuramente, o projeto poderá receber uma **interface gráfica**.
+
+## 🎯 Objetivo
+
+Criar uma ferramenta simples, prática e centralizada para realizar tarefas comuns de manutenção e configuração do Windows.
+
+## ▶️ Como executar (Por enquanto)
+
+### Requisitos
+
+* Windows
+* [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+
+### Executando o projeto
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/Tiaozin/NEXORA-PC-Tools.git
+```
+
+Entre na pasta do projeto:
+
+```bash
+cd NEXORA-PC-Tools
+```
+
+Restaure as dependências:
+
+```bash
+dotnet restore
+```
+
+Execute o NEXORA:
+
+```bash
+dotnet run
+```
+
+> **Observação:** as pastas `bin` e `obj` não são incluídas no repositório, pois são geradas automaticamente pelo .NET durante a compilação.
+
+
+---
+
+**NEXORA PC Tools — v1 em desenvolvimento 🚧**
